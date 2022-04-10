@@ -15,10 +15,6 @@ def picture():
     Frame=f'\033[0;33;40m {"—"*60}\033[0m'
     picture_=picture_choice()
     h='注意：输入-h/--help查看工具的使用'
-    print(Frame)
-    print(picture_)
-    print(Author)
-    print(Blog)
     print(f"""{Frame}
       {picture_}                    
       
