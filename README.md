@@ -1,3 +1,4 @@
+***
 > github项目地址：[https://github.com/Zhao-sai-sai/Full-Scanner](https://github.com/Zhao-sai-sai/Full-Scanner)
 ## 工具简介
 
@@ -19,3 +20,6 @@ Full-Scanner是一个多功能扫描工具，支持被动/主动信息收集，�
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/sd111.png)
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/crack111.png)
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/cms111.png)
+## 警告
+***
+### 请勿用于非法用途！否则自行承担一切后果
