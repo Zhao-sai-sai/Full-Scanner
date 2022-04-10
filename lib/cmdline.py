@@ -11,7 +11,8 @@ def picture():
 
     Author='\033[0;37;43m===作者=·=w啥都学===\033[0m'
     Blog='\033[0;37;43m===作者博客=.=www.zssnp.top===\033[0m'
-    github='\033[0;37;43m===项目地址：https://github.com/Zhao-sai-sai/Full-Scanner\033[0m'
+    github='\033[0;37;43mgithub项目地址：https://github.com/Zhao-sai-sai/Full-Scanner\033[0m'
+    gitee='\033[0;37;43mgitee项目地址：https://gitee.com/wZass/Full-Scanner\033[0m'
     Frame=f'\033[0;33;40m {"—"*60}\033[0m'
     picture_=picture_choice()
     h='注意：输入-h/--help查看工具的使用'
@@ -20,7 +21,9 @@ def picture():
       
                                         {Author}
                             {Blog}
-    {github}
+          {gitee}                            
+ {github}
+    
 {Frame}    
                             {h}
 """)

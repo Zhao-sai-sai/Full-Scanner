@@ -12,6 +12,7 @@ Full-Scanner是一个渗透测试盒子，现在还在添加功能有一部分�
 > 就下面这几个参数可以用bug还多我太难了
 
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian.png)
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian2.png)
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/fofa.png)
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/sd.png)
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/crack.png)
