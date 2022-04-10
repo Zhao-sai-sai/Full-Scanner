@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+'''
+主程序
+
+'''
+
+
 
 from lib import cmdline
 import judge

@@ -1,3 +1,6 @@
+
+
+
 import argparse
 from lib.picture  import picture_choice
 from lib.choose import choose_color_2

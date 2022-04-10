@@ -95,6 +95,7 @@ def fofa_token():
 def Interface(z,Cookie):
     speed=1
     print("你输入的是" + z)
+    print("[*]扫描结果会保存成url.txt文件")
     # base64编码
     coding=base64.b64encode(z.encode('utf-8')).decode("utf-8")
     # 请求
