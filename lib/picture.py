@@ -34,11 +34,11 @@ banner_4="""
 
 
 banner_5="""
-
-
+   
+   
      _       __                 
     |_  ||__(_  _ _.._ ._  _ ._ 
-    ||_|||  __)(_(_|| || |(/_|                                 
+    ||_|||  __)(_(_|| || |(/_|
 """
 
 
@@ -123,22 +123,22 @@ banner_5="""
 # '''
 
 
-picture_1 = choose_color(banner_1, "yellow")
-picture_2 = choose_color(banner_2, "green")
-picture_3 = choose_color(banner_3, "red")
-picture_4 = choose_color(banner_4, "cyan")
-picture_5 = choose_color(banner_5, "cyan")
+# banner_1 = choose_color(banner_1, "yellow")
+# banner_2 = choose_color(banner_2, "green")
+# banner_3 = choose_color(banner_3, "red")
+# banner_4 = choose_color(banner_4, "cyan")
+# banner_5 = choose_color(banner_5, "cyan")
 
 def picture_choice():
     i=random.choice(range(5))
     if i == 0:
-        return picture_1
+        return banner_1
     elif i == 1:
-        return picture_2
+        return banner_2
     elif i == 2:
-        return picture_3
+        return banner_3
     elif i == 3:
-        return picture_4
+        return banner_4
     elif i == 4:
-        return picture_5
+        return banner_5
 
