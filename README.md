@@ -13,9 +13,9 @@ Full-Scanner是一个渗透测试盒子，现在还在添加功能有一部分�
 
 > 就下面这几个参数可以用bug还多,我太难了 <img src="https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/bqbwq.gif" height="50xp" ><p/> 
 
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian1.png)
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian2.png)
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/fofa1.png)
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/sd1.png)
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/crack1.png)
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/cms1.png)
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian111.png)
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian222.png)
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/fofa111.png)
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/sd111.png)
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/crack111.png)
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/cms111.png)

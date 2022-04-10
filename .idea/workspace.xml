@@ -4,6 +4,13 @@
     <list default="true" id="6f42e3da-4645-4c5b-8e13-2b555f515d0b" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/cms1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/crack1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/fofa1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/mian1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/mian2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/sd1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/cmdline.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cmdline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
