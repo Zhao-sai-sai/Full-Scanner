@@ -2,9 +2,15 @@ from blasting.ftp_blasting import ftp
 from collect import shodan,fofa
 from thirdparty.extracted import webcrack
 from thirdparty.CmsVulScan import CmsVulScan
-
+from lib.choose_model import Big_Category
 
 class whether():
+
+# 选择使用选择模式
+    def G_(self,G):
+        if G==True:
+            Big_Category.Category()
+
 
     def ftp(self,Ftpcrack_Parameter,u,p=21,quantity=1):
         try:
@@ -36,3 +42,4 @@ class whether():
                 fofa.Interface(u,Cookie)
         except Exception:
             print("出差了看看是不是参数输入错误")
+

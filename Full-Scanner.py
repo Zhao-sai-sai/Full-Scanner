@@ -4,15 +4,21 @@
 
 '''
 
+h='\t\t\t  注意：输入-h/--help查看工具的使用\n'
 
 
 from lib import cmdline
 import judge
 
 if __name__ == '__main__':
-    cmdline.picture()
+
     args= cmdline.help_h()
     judge=judge.whether()
+# 选择使用选择模式
+    judge.G_(args.G)
+
+# 图标
+    print(cmdline.picture(),h)
 # 爆破
     # ftp
     judge.ftp(args.ftpcrack,args.u,args.p,args.quantity)

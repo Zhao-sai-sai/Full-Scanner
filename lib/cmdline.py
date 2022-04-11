@@ -1,6 +1,3 @@
-
-
-
 import argparse
 from lib.picture  import picture_choice
 from lib.choose import choose_color_2
@@ -18,8 +15,8 @@ def picture():
     gitee='\033[0;33;40mgitee项目地址：https://gitee.com/wZass/Full-Scanner\033[0m'
     Frame=f'\033[0;33;40m {"—"*60}\033[0m'
     picture_=picture_choice()
-    h='注意：输入-h/--help查看工具的使用'
-    print(f"""{Frame}
+
+    icon=f"""{Frame}
       {picture_}                    
       
                                         {Author}
@@ -27,18 +24,17 @@ def picture():
           {gitee}                            
  {github}
     
-{Frame}    
-                            {h}
-""")
-
+{Frame}                              
+"""
+    return  icon
 def help_h():
     parser = argparse.ArgumentParser(usage=choose_color_2('本程序是一个多功能工具，支持信息收集，漏洞扫描，常见的POC和EXP'))
     # 选择模式
     Choose_cmdline=parser.add_argument_group(choose_color_2("选择模式"),
           "如果不喜欢输入命令那样，可以用下面的参数") # 子选项
 
-    Choose_cmdline.add_argument("-G", metavar='',
-                        help="选择使用选择模式")
+    Choose_cmdline.add_argument("-G",action="store_true",
+                                help="选择使用选择模式")
 
 
     # 目标指定
@@ -116,4 +112,4 @@ def help_h():
                                     action="store_true", default="1")
     Vulnerability_Scan.add_argument("-CPE", help="自动扫描CMS识别后利用CMS的POC和EXP",
                                     action="store_true", default="1")
-    return parser.parse_args()
+    return parser.parse_args(['-G'])
