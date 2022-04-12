@@ -1,5 +1,5 @@
 import random
-from lib.choose import choose_color
+
 
 
 

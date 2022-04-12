@@ -2,7 +2,7 @@ import ftplib
 import  sys
 import threading
 import queue
-
+from lib.choose import UseStyle
 
 
 # 多线程
@@ -44,8 +44,8 @@ def Log_in(Thread,ip,port):
                 break
         except ftplib.error_perm:
             ftp.close()
-            print("密码错误==用户：" + user_passwd[0] + "   密码：" + user_passwd[1])
-
+            # 原位输出
+            print('\r' + str(UseStyle("密码错误=====",fore='yellow')+f"用户：{UseStyle(user_passwd[0],fore='red')}"+f"密码: {UseStyle(user_passwd[1],fore='red')}"), end='', flush=True)
 
 
 def enter():
@@ -64,7 +64,11 @@ def enter():
     quantity=sys.argv[3]
 
 def fill_in(ip,port,quantity):
+    if port==None or port=='':
+        port=21
+    if quantity==None or quantity=='':
+        quantity=1
 
-    print("默认线程数是"+str(quantity)+"端口是"+str(21))
-    print("现在扫描的是"+ip+ "端口是" + str(21))
+    print("默认线程数是"+str(quantity)+"端口是"+str(port))
+    print("现在扫描的是"+UseStyle((ip+ "端口是" + str(port)),mode='underline',fore='red'))
     Thread(ip,21,quantity)

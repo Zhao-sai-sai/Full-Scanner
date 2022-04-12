@@ -2,7 +2,8 @@ import  requests
 from lxml import etree
 import base64
 import time
-
+from conf import config
+from lib.choose import choose_color_2
 
 # 提取出来的结果保存起来
 def Searchresults(results_IP):
@@ -18,20 +19,20 @@ def Multiple(Judge_page,coding,headers,Cookie,speed):
     for all in range(1,int(Judge_page)):
         # 速度
         time.sleep(speed)
-        print("[*]现在提取是第"+str(all)+"页")
+        print(choose_color_2("[*]现在提取是第"+str(all)+"页"))
 
         # 逐个的页面提取
         html = requests.get('https://fofa.info/result?qbase64=' + coding+"&page="+str(all), headers=headers,cookies=Cookie)
         html = etree.HTML(html.text)
         divs = html.xpath(r'//span/a/@href')  # 语法
         for results_IP in divs:
-            print("[*]第"+str(all)+"页----"+"IP地址是" + str(results_IP))
+            print(choose_color_2("[*]第"+str(all)+"页----"+"IP地址是" + str(results_IP)))
             Searchresults(results_IP)
             recording += 1
 
         # 循环50次就停止
         if recording >= 50:
-            print("普通用户只能放我50条信息")
+            print(choose_color_2("普通用户只能放我50条信息"))
             break
 
 # 分析查询到结果判断是否是一页
@@ -42,10 +43,10 @@ def Determine(html,headers,Cookie,coding,speed):
         if Judge_page: # 如果搜索结果多进行循环一个一个页面的读取
             Multiple(Judge_page[0],coding,headers,Cookie,speed)
         else:
-            print("搜索结果就一页！")
+            print(choose_color_2("搜索结果就一页！"))
             divs = html.xpath(r'//span[@class="aSpan"]//@href')  # 探测IP
             for results_IP in divs:
-                print("IP地址是" + str(results_IP))
+                print(choose_color_2("IP地址是" + str(results_IP)))
                 Searchresults(results_IP)
     except Exception as bc:
         print("出差了：" + str(bc))
@@ -68,14 +69,14 @@ def cfq_insert_request(Cookie,coding,speed):
 
 # 保存我的输入的fofa_token值
 def fofa_token():
-    i = str(input("输入'1'用上一次的Fofa的Cookie值:"))
+    i = str(input(choose_color_2("输入'1'用上一次的Fofa的Cookie值:")))
     Cookie_fofa_token = 0
     if i == '1':
         fofa_token_document = open("fofa_token.txt", 'r')  # 读文件
         Cookie_fofa_token = fofa_token_document.readline()  # 读取文件的API
         fofa_token_document.close()  # 关闭文件
     else:
-        Cookie_fofa_token = input("Fofa请输入Cookie值：") # 输入
+        Cookie_fofa_token = input(choose_color_2("Fofa请输入Cookie值：")) # 输入
         fofa_token_document = open("fofa_token.txt", 'w') #打开文件写的方式
         fofa_token_document.write(Cookie_fofa_token) # 写入
         fofa_token_document.close()# 关闭文件
@@ -93,9 +94,13 @@ def fofa_token():
     return  Cookie_fofa_token
 
 def Interface(z,Cookie):
+    if Cookie==None: # 使用默认Cookie
+        Cookie = config.SeriousConfig['fofa']
+    print(Cookie)
+
     speed=1
-    print("你输入的是" + z)
-    print("[*]扫描结果会保存成url.txt文件")
+    print(choose_color_2("你输入的是" + z))
+    print(choose_color_2("[*]扫描结果会保存成url.txt文件"))
     # base64编码
     coding=base64.b64encode(z.encode('utf-8')).decode("utf-8")
     # 请求

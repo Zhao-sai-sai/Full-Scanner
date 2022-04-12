@@ -1,4 +1,7 @@
 import shodan
+from conf import config
+from lib.choose import choose_color_2,UseStyle
+from lib.choose_model.Auxiliary import Sundries
 
 # API
 def shodan_API():
@@ -31,16 +34,28 @@ def shodan_API():
     # api = shodan_API()
     host = str(input("请输入目标地址："))
     return api
+
+
 def shod(host,Shodan_api):
-    api = shodan.Shodan(Shodan_api)
+    print(Shodan_api)
     try:
+        if Shodan_api==None or Shodan_api=='': # 查看你的PCT是否输入参数,没有输入执行
+            print(choose_color_2("当前你使用的是默认config配置文件的API[*]内容：")+str(config.SeriousConfig['shodan']))
+
+            Shodan_api=config.SeriousConfig['shodan']
+        else:
+            print(choose_color_2("你手动指定的API[*]内容：")+str(Shodan_api))
+
+        print("IP地址是："+UseStyle(host,mode='underline'))# 输出显示样式
+        print(Sundries().Wire_)
+        api = shodan.Shodan(Shodan_api)
+
         resultip = api.host(host)
 
-        print("IP地址是：" + resultip['ip_str'])
 
         for result in resultip['data']:
-            print("放的端口：" + str(result['port']) + "\n使用的服务器软件：" + result['product'] + '\n响应信息：' + str(
-                result['data']) + '\n爬曲时间：' + result['timestamp'] + "\n国家是：" + resultip['country_name'])
+            print(choose_color_2("放的端口：" + str(result['port']) + "\n使用的服务器软件：" + result['product'] + '\n响应信息：' + str(
+                result['data']) + '\n爬曲时间：' + result['timestamp'] + "\n国家是：" + resultip['country_name']))
         print()
     except Exception as bc:
-        print("只扫描web服务信息")
+        print("有错误！\n错误提示"+str(bc))

@@ -3,18 +3,13 @@ from lib.picture  import picture_choice
 from lib.choose import choose_color_2
 
 
-
-
-
-
-def picture():
-
-    Author='\033[0;33;40m===作者=·=w啥都学===\033[0m'
-    Blog='\033[0;33;40m===Blog地址=.=www.zssnp.top===\033[0m'
-    github='\033[0;33;40mgithub项目地址：https://github.com/Zhao-sai-sai/Full-Scanner\033[0m'
-    gitee='\033[0;33;40mgitee项目地址：https://gitee.com/wZass/Full-Scanner\033[0m'
-    Frame=f'\033[0;33;40m {"—"*60}\033[0m'
-    picture_=picture_choice()
+def banner():
+    Author='\033[0;33m===作者=·=w啥都学===\033[0m'
+    Blog='\033[0;33m===Blog地址=.=www.zssnp.top===\033[0m'
+    github='\033[0;33mgithub项目地址：https://github.com/Zhao-sai-sai/Full-Scanner\033[0m'
+    gitee='\033[0;33mgitee项目地址：https://gitee.com/wZass/Full-Scanner\033[0m'
+    Frame=f'\033[0;33m {"—"*60}\033[0m'
+    picture_=choose_color_2(picture_choice())
 
     icon=f"""{Frame}
       {picture_}                    
@@ -43,9 +38,9 @@ def help_h():
     Choose.add_argument("-u", metavar='目标地址',
                         help="指定目标地址 比如 -u www.xxxx.com")
     Choose.add_argument("-p",metavar='端口',
-    help="端口扫描，指定端口，指定参数不添加参数默认扫描全端口", default=0)
+    help="端口扫描，指定端口，指定参数不添加参数默认扫描全端口")
     Choose.add_argument("-quantity", help="设置速度默认是1",
-                        metavar='速度', default=0)
+                        metavar='速度')
 
 
     #被动信息收集
@@ -64,7 +59,7 @@ def help_h():
     Passive_collect_message.add_argument("-son", help="被动子域名探测，会结合搜索引擎进行探测",
                         action="store_true", default=0)
     Passive_collect_message.add_argument("-PCT",
-                        help="认证密钥或者Cookie，shodan和fofa都是需要的")
+                        help="认证密钥或者Cookie   如果不想每次都指定可以去config.py文件里面添加，shodan和fofa都是需要的")
 
     # 主动信息收集
     Active_collect_message=parser.add_argument_group(choose_color_2("主动信息收集"),
@@ -96,7 +91,7 @@ def help_h():
     Blasting.add_argument("-crack", help="登录界面自动化破解",
                          action="store_true")
 
-    Blasting.add_argument("-ftpcrack", help="ftp爆破",
+    Blasting.add_argument("-ftp", help="ftp爆破",
                         action="store_true")
 
     # 漏洞验证和利用
@@ -112,4 +107,4 @@ def help_h():
                                     action="store_true", default="1")
     Vulnerability_Scan.add_argument("-CPE", help="自动扫描CMS识别后利用CMS的POC和EXP",
                                     action="store_true", default="1")
-    return parser.parse_args(['-G'])
+    return parser.parse_args()
