@@ -3,6 +3,7 @@ from collect import shodan,fofa
 from thirdparty.extracted import webcrack
 from thirdparty.CmsVulScan import CmsVulScan
 from lib.choose_model import Big_Category
+from Activelibrary.backgroundscan import mian
 
 
 class whether():
@@ -45,6 +46,13 @@ class whether():
         try:
             if Fofa_Parameter==True:
                 fofa.Interface(u,Cookie)
+        except Exception:
+            print("出差了看看是不是参数输入错误")
+# 后台扫描
+    def c_(self,c,u):
+        try:
+            if c == True:
+                mian.Interface(u)
         except Exception:
             print("出差了看看是不是参数输入错误")
 

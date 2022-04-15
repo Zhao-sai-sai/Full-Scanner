@@ -1,11 +1,16 @@
 import os
 from lib.cmdline import banner
+import time
+from lib.choose import UseStyle
 
 # 终端清空
 def Terminal_clear():
     os.system('cls' if os.name == 'nt' else 'clear')
+def current_time():
+    return UseStyle(time.strftime("[%Y-%m-%d %H:%M:%S]: [*]", time.localtime()),fore='blue')
 
-
+def Wire():
+    return f'\033[0;33m {"—"*60}\033[0m'
 class Sundries():
 
 
@@ -20,3 +25,4 @@ class Sundries():
         Terminal_clear() # 终端清空
         print(banner())  # 图标
         print(self.hint)
+

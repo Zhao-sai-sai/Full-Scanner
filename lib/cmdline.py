@@ -73,8 +73,7 @@ def help_h():
     Active_collect_message.add_argument("-WAF", help="WAF识别",
                                         action="store_true", default=0)
 
-    Active_collect_message.add_argument("-c", help="目录爬取 比如 -c /admin/",
-                                        action="store_true",default=0)
+    Active_collect_message.add_argument("-c",action="store_true", help="目录爬取 比如 -c /admin/")
 
 
 

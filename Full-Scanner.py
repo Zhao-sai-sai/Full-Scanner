@@ -39,3 +39,6 @@ if __name__ == '__main__':
 # 主动信息收集
     #cms探测
     judge.CmsVulScan_(args.cms,args.u)
+
+    #后台扫描
+    judge.c_(args.c,args.u)
