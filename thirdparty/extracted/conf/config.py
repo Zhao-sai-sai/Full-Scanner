@@ -1,12 +1,11 @@
 import os
-
+from conf import config
 
 def txt2list(txt):
     ret = []
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), txt)
-    with open(path, "r", encoding="UTF-8") as f:
-        for line in f.readlines():
-            ret.append(line.strip())
+
+    for line in open(txt, encoding="UTF-8"):
+        ret.append(line.rstrip())
     return ret
 
 
@@ -34,8 +33,8 @@ crackConfig = {
 generatorConfig = {
     "dict_config": {
         "base_dict": {
-            "username_list": ['admin'],  # 爆破用户名字典
-            "password_list": txt2list("passwd.txt")  # 爆破密码字典
+            "username_list": txt2list(config.Specifyablastdictionary['extracted']['admin']),  # 爆破用户名字典
+            "password_list": txt2list(config.Specifyablastdictionary['extracted']['passwd'])  # 爆破密码字典
 
         },
         "domain_dict": {

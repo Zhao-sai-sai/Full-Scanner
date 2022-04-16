@@ -4,35 +4,37 @@ import base64
 import time
 from conf import config
 from lib.choose import choose_color_2
+from lib.Auxiliary import current_time
+
 
 # 提取出来的结果保存起来
 def Searchresults(results_IP):
-    Searchresults_document = open("url.txt", 'a')  # 打开文件写的方式
+    Searchresults_document = open(config.Savelocation['fofa'], 'a')  # 打开文件写的方式
     Searchresults_document.write((results_IP+'\n'))  # 写入
     Searchresults_document.close()  # 关闭文件
 
 # 如果搜索结果多执行
 def Multiple(Judge_page,coding,headers,Cookie,speed):
-    print("搜索结果有" + Judge_page + "页")
+    print(current_time()+"搜索结果有" + Judge_page + "页")
     time.sleep(0.5) # 停顿一下
     recording=0
     for all in range(1,int(Judge_page)):
         # 速度
         time.sleep(speed)
-        print(choose_color_2("[*]现在提取是第"+str(all)+"页"))
+        print(choose_color_2(current_time()+"[*]现在提取是第"+str(all)+"页"))
 
         # 逐个的页面提取
         html = requests.get('https://fofa.info/result?qbase64=' + coding+"&page="+str(all), headers=headers,cookies=Cookie)
         html = etree.HTML(html.text)
         divs = html.xpath(r'//span/a/@href')  # 语法
         for results_IP in divs:
-            print(choose_color_2("[*]第"+str(all)+"页----"+"IP地址是" + str(results_IP)))
+            print(current_time()+choose_color_2("[*]第"+str(all)+"页----"+"IP地址是" + str(results_IP)))
             Searchresults(results_IP)
             recording += 1
 
         # 循环50次就停止
         if recording >= 50:
-            print(choose_color_2("普通用户只能放我50条信息"))
+            print(current_time()+choose_color_2("普通用户只能放我50条信息"))
             break
 
 # 分析查询到结果判断是否是一页
@@ -43,13 +45,13 @@ def Determine(html,headers,Cookie,coding,speed):
         if Judge_page: # 如果搜索结果多进行循环一个一个页面的读取
             Multiple(Judge_page[0],coding,headers,Cookie,speed)
         else:
-            print(choose_color_2("搜索结果就一页！"))
+            print(current_time()+choose_color_2("搜索结果就一页！"))
             divs = html.xpath(r'//span[@class="aSpan"]//@href')  # 探测IP
             for results_IP in divs:
-                print(choose_color_2("IP地址是" + str(results_IP)))
+                print(current_time()+choose_color_2("[*]页----IP地址是" + str(results_IP)))
                 Searchresults(results_IP)
     except Exception as bc:
-        print("出差了：" + str(bc))
+        print(current_time()+"出差了：" + str(bc))
 
 
 
@@ -94,13 +96,13 @@ def fofa_token():
     return  Cookie_fofa_token
 
 def Interface(z,Cookie):
-    if Cookie==None: # 使用默认Cookie
+    if Cookie==False or Cookie=='': # 使用默认Cookie
+        print(current_time()+"当前你使用的是config.py里面的默认Cookie")
         Cookie = config.SeriousConfig['fofa']
-    print(Cookie)
-
+    print(current_time()+"Cookie值是："+Cookie)
     speed=1
-    print(choose_color_2("你输入的是" + z))
-    print(choose_color_2("[*]扫描结果会保存成url.txt文件"))
+    print(current_time()+choose_color_2("你输入的是" + z))
+    print(current_time()+choose_color_2("[*]扫描结果会保存到result/fofa/fofa.txt文件"))
     # base64编码
     coding=base64.b64encode(z.encode('utf-8')).decode("utf-8")
     # 请求

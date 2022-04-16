@@ -13,46 +13,57 @@ class whether():
         if G==True:
             Big_Category.Category()
 
-#  Ftp爆破
-    def ftp(self,Ftpcrack_Parameter,u,p=21,quantity=1):
+
+# 被动信息收集
+    # fofa_
+    def fofa_(self, Fofa_Parameter, Cookie):
         try:
-            if Ftpcrack_Parameter==True:
-                ftp.fill_in(ip=u,port=p,quantity=quantity)
+            if Fofa_Parameter != False:
+                fofa.Interface(Fofa_Parameter, Cookie)
+        except Exception:
+            print("出差了看看是不是参数输入错误")
+
+    # shodan搜索
+    def shodan(self, Shodan_Parameter, API):
+        try:
+            if Shodan_Parameter != False:
+                shodan.shod(Shodan_Parameter, API)
         except Exception as bc:
-            print("出差了看看是不是参数输入错误")
-# shodan搜索
-    def shodan(self,Shodan_Parameter,u,API):
+            print("有错误！错误提示" + str(bc))
+# 主动信息收集
+
+    # cms识别
+    def CmsVulScan_(self,Cms_Parameter):
         try:
-            if Shodan_Parameter==True:
-                shodan.shod(u,API)
-        except Exception as bc:
-            print("有错误！错误提示"+str(bc))
-# 登录界面爆破
-    def webcrack_(self,Crack_Parameter,u):
-        try:
-            if Crack_Parameter==True:
-                webcrack.Interface(u)
+            if Cms_Parameter!=False:
+                CmsVulScan.Interface(Cms_Parameter)
         except Exception:
             print("出差了看看是不是参数输入错误")
-# cms识别
-    def CmsVulScan_(self,Cms_Parameter,u):
+
+    # 后台扫描
+    def c_(self, c,T):
         try:
-            if Cms_Parameter==True:
-                CmsVulScan.Interface(u)
+            if c != False:
+                mian.Interface(c,T)
         except Exception:
             print("出差了看看是不是参数输入错误")
-# fofa_
-    def fofa_(self,Fofa_Parameter,u,Cookie):
+# 暴力破解
+
+    # 登录界面爆破
+    def webcrack_(self,Crack_Parameter):
         try:
-            if Fofa_Parameter==True:
-                fofa.Interface(u,Cookie)
+            if Crack_Parameter!=False:
+                webcrack.Interface(Crack_Parameter)
         except Exception:
             print("出差了看看是不是参数输入错误")
-# 后台扫描
-    def c_(self,c,u):
+
+    #  Ftp爆破
+    def ftp(self,Ftpcrack_Parameter,p,quantity):
         try:
-            if c == True:
-                mian.Interface(u)
+            if Ftpcrack_Parameter !=False:
+                ftp.fill_in(ip=Ftpcrack_Parameter,port=p,quantity=quantity)
         except Exception:
             print("出差了看看是不是参数输入错误")
+
+
 

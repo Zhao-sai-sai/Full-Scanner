@@ -1,9 +1,13 @@
-from lib.choose import choose_color_2
-from lib.choose_model import Auxiliary
+from lib import Auxiliary
 from lib.choose_model.sub_options import blasting_Options
 from lib.choose_model.sub_options import Passive_Options
-from lib.choose_model.Auxiliary import Sundries
 from lib.choose_model.sub_options import Active_Options
+from rich.console import Console
+from rich.table import Table
+from rich import box
+
+
+
 
 # 判断大类输入的什么
 def Category_Judge(Judge='No'):
@@ -22,11 +26,19 @@ def Category_Judge(Judge='No'):
 def Category():
     Auxiliary.Sundries().total_tips() # 提示
 
-    print("%s\n%s\n%s\n%s\n%s\n%s"%(choose_color_2('被动信息收集:\t\t\t|1|'.center(35, '*')),
-                                                            choose_color_2('主动信息收集:\t\t\t|2|'.center(35, ' ')),
-                                                            choose_color_2('CDN识别:\t\t\t\t|3|'.center(35, ' ')),
-                                                            choose_color_2('爆破:\t\t\t\t|4|'.center(33, ' ')),
-                                                            choose_color_2('POC和EXP:\t\t\t\t|5|'.center(36, ' ')),
-                                                            choose_color_2('退出:\t\t\t\t|Q|'.center(33, ' '))))
-    print(Sundries().Wire_)
-    Category_Judge(input(" 请输入："))
+    table = Table(title="渗透测试阶段", box=box.HORIZONTALS, style="yellow")
+
+    table.add_column("序列", justify="right", style="blue", min_width=3, no_wrap=True)
+    table.add_column("名字", style="green", min_width=51, justify="right")
+
+    table.add_row("|1|", "被动信息收集")
+    table.add_row("|2|", "主动信息收集")
+    table.add_row("|3|", "CDN识别")
+    table.add_row("|4|", "暴力破解")
+    table.add_row("|5|", "POC和EXP")
+    table.add_row("|Q|", "退出")
+
+    console = Console()
+    console.print(table)
+
+    Category_Judge(input(" 选择 > "))

@@ -1,7 +1,14 @@
 import shodan
 from conf import config
 from lib.choose import choose_color_2,UseStyle
-from lib.choose_model.Auxiliary import Sundries
+from lib.Auxiliary import Sundries
+from lib.Auxiliary import current_time
+
+# 提取出来的结果保存起来
+def Searchresults(results_IP):
+    Searchresults_document = open(config.Savelocation['shodan'], 'a')  # 打开文件写的方式
+    Searchresults_document.write((results_IP+'\n'))  # 写入
+    Searchresults_document.close()  # 关闭文件
 
 # API
 def shodan_API():
@@ -37,25 +44,81 @@ def shodan_API():
 
 
 def shod(host,Shodan_api):
-    print(Shodan_api)
     try:
-        if Shodan_api==None or Shodan_api=='': # 查看你的PCT是否输入参数,没有输入执行
-            print(choose_color_2("当前你使用的是默认config配置文件的API[*]内容：")+str(config.SeriousConfig['shodan']))
+        if Shodan_api==False or Shodan_api=='': # 查看你的PCT是否输入参数,没有输入执行
+            print(current_time()+choose_color_2("当前你使用的是默认config配置文件的API[*]内容：")+str(config.SeriousConfig['shodan']))
 
             Shodan_api=config.SeriousConfig['shodan']
         else:
-            print(choose_color_2("你手动指定的API[*]内容：")+str(Shodan_api))
-
-        print("IP地址是："+UseStyle(host,mode='underline'))# 输出显示样式
+            print(current_time()+choose_color_2("你手动指定的API[*]内容：")+str(Shodan_api))
+        print(current_time() + choose_color_2("[*]扫描结果会保存到result/shodan/shodan.txt文件"))
+        print(current_time()+"IP地址是："+UseStyle(host,mode='underline'))# 输出显示样式
         print(Sundries().Wire_)
         api = shodan.Shodan(Shodan_api)
 
         resultip = api.host(host)
 
-
         for result in resultip['data']:
-            print(choose_color_2("放的端口：" + str(result['port']) + "\n使用的服务器软件：" + result['product'] + '\n响应信息：' + str(
-                result['data']) + '\n爬曲时间：' + result['timestamp'] + "\n国家是：" + resultip['country_name']))
-        print()
+
+            # 预防报错
+            try:
+                domains=result['domains']
+            except:
+                result['domains']=' '
+                domains=result['domains']
+            try:
+                org=result['org']
+            except:
+                result['org'] = ' '
+                org = result['org']
+
+
+            try:
+                os=result['os']
+            except:
+                result['os'] = ' '
+                os = result['os']
+
+
+            try:
+                port=result['port']
+            except:
+                result['port']=' '
+                port = result['port']
+
+
+            try:
+                product=result['product']
+            except:
+                result['product']=' '
+                product = result['product']
+
+
+            try:
+                data=result['data']
+            except:
+                result['data']=' '
+                data = result['data']
+
+
+            try:
+                timestamp=result['timestamp']
+            except:
+                result['timestamp']=' '
+                timestamp = result['timestamp']
+
+
+            try:
+                country_name=result["location"]['country_name']
+            except:
+                result["location"]['country_name']=' '
+                country_name = result["location"]['country_name']
+
+
+            searchresults=current_time()+choose_color_2(f'\n域名: {domains}\n云提供商: {org}\n操作系统: {os}\n放的端口: {str(port)}\n使用的服务器软件: {product}\n响应信息: {data}\n爬曲时间: {timestamp}\n国家是: {country_name}')
+
+            print(searchresults)
+            Searchresults(searchresults)
+            print()
     except Exception as bc:
-        print("有错误！\n错误提示"+str(bc))
+        print(current_time()+"有错误！\n错误提示"+str(bc))

@@ -1,7 +1,10 @@
 from collect import shodan,fofa
-from lib.choose_model import Auxiliary
+from lib import Auxiliary
 from lib.choose_model import Big_Category
 from lib.choose import choose_color_2
+from rich.console import Console
+from rich.table import Table
+from rich import box
 
 
 
@@ -17,7 +20,7 @@ def Passive_Options_Judge(Judge):
         Big_Category.Category()
     elif Judge=='1':
         url=input(choose_color_2('请输入目标地址：'))
-        Cookie = input(choose_color_2('请输Cookie值：'))
+        Cookie = input(choose_color_2('请输Cookie值回车用config.py的值：'))
         fofa.Interface(url,Cookie)
     elif Judge=='2':
         host=input(choose_color_2('请输入目标地址：'))
@@ -29,9 +32,18 @@ def Passive_Information_Gathering():
 
     Auxiliary.Sundries().total_tips() # 提示
 
-    print("%s\n%s\n%s\n%s"%(choose_color_2('fofa子域名探测:\t\t\t|1|'.center(36, '*')),
-                            choose_color_2('shodan信息收集:\t\t\t|2|'.center(36, '*')),
-                            choose_color_2('返回上一层:\t\t\t\t|q|'.center(32, '*')),
-                            choose_color_2('退出:\t\t\t\t|Q|'.center(31, '*'))))
-    print(" %s" % (f'\033[0;33;40m{"—" * 60}\033[0m'))
-    Passive_Options_Judge(input(choose_color_2(" 请输入：")))
+
+    table = Table(title="被动信息收集", box=box.HORIZONTALS, style="yellow")
+
+    table.add_column("序列", justify="right", style="green", min_width=3, no_wrap=True)
+    table.add_column("名字", style="blue", min_width=51, justify="right")
+
+
+    table.add_row("|1|", "fofa子域名探测")
+    table.add_row("|2|", "shodan信息收集")
+    table.add_row("|q|", "返回上一层")
+    table.add_row("|Q|", "退出")
+
+    console = Console()
+    console.print(table)
+    Passive_Options_Judge(input(" 选择 > "))

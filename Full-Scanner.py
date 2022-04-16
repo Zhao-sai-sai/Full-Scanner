@@ -20,25 +20,30 @@ if __name__ == '__main__':
 # 选择使用选择模式
     judge.G_(args.G)
 
-
-# 爆破
-    # ftp
-    judge.ftp(args.ftp,args.u,args.p,args.quantity)
-
-    # 登录界面自动化破解
-    judge.webcrack_(args.crack,args.u)
-
 # 被动信息收集
-    # shodan
-    judge.shodan(args.shodan,args.u,args.PCT)
-
     # fofa
+    judge.fofa_(args.fofa,args.Cookie)
 
-    judge.fofa_(args.fofa, args.u, args.PCT)
+    # shodan
+    judge.shodan(args.shodan,args.API)
 
 # 主动信息收集
     #cms探测
-    judge.CmsVulScan_(args.cms,args.u)
+    judge.CmsVulScan_(args.cms)
+
 
     #后台扫描
-    judge.c_(args.c,args.u)
+    judge.c_(args.c,args.T)
+
+# 爆破
+
+    # 登录界面自动化破解
+    judge.webcrack_(args.crack)
+
+    # ftp
+    judge.ftp(args.ftp,args.p,args.T)
+
+
+
+
+
