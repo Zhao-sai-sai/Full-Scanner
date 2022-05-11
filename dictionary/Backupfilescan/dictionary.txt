@@ -1,0 +1,16 @@
+index.php.txt
+backup.zip
+website.zip
+web.zip
+index.zip
+wwwroot.zip
+faisunzip.zip
+wwwroot.rar
+wwwroot.tar.gz
+wwwroot.gz
+wwwroot.sql.zip
+back.zip
+wwwroot.sql
+backup.zip
+bbs.zip
+

@@ -35,6 +35,10 @@ if __name__ == '__main__':
     #后台扫描
     judge.c_(args.c,args.T)
 
+
+    # 备份文件扫描
+    judge.b_(args.b,args)
+
 # 爆破
 
     # 登录界面自动化破解

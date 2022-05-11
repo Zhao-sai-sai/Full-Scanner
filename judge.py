@@ -4,7 +4,7 @@ from thirdparty.extracted import webcrack
 from thirdparty.CmsVulScan import CmsVulScan
 from lib.choose_model import Big_Category
 from Activelibrary.backgroundscan import mian
-
+from Activelibrary.Backupfilescan import  mian2
 
 class whether():
 
@@ -47,6 +47,17 @@ class whether():
                 mian.Interface(c,T)
         except Exception:
             print("出差了看看是不是参数输入错误")
+    # 备份文件扫描
+    def b_(self,b,args):
+
+        try:
+
+            if b != False:
+                mian2.Interface(args)
+        except Exception:
+            print("出差了看看是不是参数输入错误")
+
+
 # 暴力破解
 
     # 登录界面爆破
