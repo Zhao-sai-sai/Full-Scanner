@@ -1,9 +1,0 @@
-http://127.0.0.1/index.html
-http://127.0.0.1/config.php
-http://127.0.0.1/link
-http://127.0.0.1/a.php
-http://127.0.0.1/sitemap.xml
-http://127.0.0.1/public
-http://127.0.0.1/movies
-http://127.0.0.1/archives
-http://127.0.0.1/img
