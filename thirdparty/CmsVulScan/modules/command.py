@@ -2,6 +2,8 @@ import argparse
 from rich.console import Console
 from rich.table import Table
 from rich import box
+from conf import config
+
 
 def command(u):
 
@@ -26,7 +28,6 @@ def command(u):
 
     table.add_row("-f","批量扫描，指定文本文件，一行一个url")
     table.add_row("-p", "设置代理，格式：http://127.0.0.1:8080")
-    table.add_row("-o","指定保存路径")
     table.add_row("-t", "指定线程，默认20s")
     table.add_row("-out", "指定超时时间，默认20")
     table.add_row("-gen", "重新生成payload文件")
@@ -34,9 +35,9 @@ def command(u):
 
     console = Console()
     console.print(table)
-
-    parameter=input("""  \033[0;31;40m比如：-o /a.txt         注意：不输入全部是默认\033[0m\n  \033[0;33;40m请输入：\033[0m""")
-
+    print("  扫描结果会保存到result/cms/文件夹里面")
+    parameter=input("""  \033[0;31;40m比如：-t 30 #指定线程         注意：不输入全部是默认\033[0m\n  \033[0;33;40m请输入：\033[0m""")
+    parameter+="-o "+config.Savelocation['cms']
     if '-t' in parameter:
         return parser.parse_args(f'{parameter}'.split())
     else:

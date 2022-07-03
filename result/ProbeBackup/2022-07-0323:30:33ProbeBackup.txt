@@ -1,0 +1,17 @@
+http://baidu.com/a.zip		文件大小：19.4 KB
+http://baidu.com/a.rar		文件大小：19.4 KB
+http://baidu.com/a.tar.gz		文件大小：19.4 KB
+http://baidu.com/a.sql.gz		文件大小：19.4 KB
+http://baidu.com/a.7z		文件大小：19.4 KB
+http://baidu.com/a.sql		文件大小：19.4 KB
+http://baidu.com/a.tar.tgz		文件大小：19.4 KB
+http://baidu.com/a.tar.bz2		文件大小：19.4 KB
+http://baidu.com/a.gz		文件大小：19.4 KB
+http://baidu.com/a.tar.xz		文件大小：19.4 KB
+http://baidu.com/a.log.gz		文件大小：19.4 KB
+http://baidu.com/a.log.bz2		文件大小：19.4 KB
+http://baidu.com/a.log.xz		文件大小：19.4 KB
+http://baidu.com/a.wim		文件大小：19.4 KB
+http://baidu.com/a.lzh		文件大小：19.4 KB
+http://baidu.com/a.bak		文件大小：19.4 KB
+http://baidu.com/a.txt		文件大小：19.4 KB

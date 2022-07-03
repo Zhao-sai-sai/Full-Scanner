@@ -7,47 +7,62 @@
 h='\t\t\t  注意：输入-h/--help查看工具的使用\n'
 
 
-from lib import cmdline
-from lib.cmdline import banner
-import judge
 
+
+from lib.cmdline import cmdline  # 图标
+import judge
+import platform
+from colorama import init
+init(autoreset=True)
 
 if __name__ == '__main__':
+
 # 图标
-    print(banner())
+    print(cmdline.banner())
     args= cmdline.help_h()
     judge=judge.whether()
-# 选择使用选择模式
-    judge.G_(args.G)
+
+
+# #选择使用选择模式
+#     judge.G_(args.G)
 
 # 被动信息收集
     # fofa
-    judge.fofa_(args.fofa,args.Cookie)
+    judge.fofa_judge(args.fofa,args.cookie)
 
     # shodan
-    judge.shodan(args.shodan,args.API)
+    judge.shodan_judge(args.shodan,args.api)
+
+    # whois
+    judge.whois_judge(args.whois,args)
+
+    # bing
+    judge.google_judge(args.bing, args)
+
+    # DNS查询
+    judge.SubDNS_judge(args.SubDNS, args)
 
 # 主动信息收集
     #cms探测
-    judge.CmsVulScan_(args.cms)
-
-
-    #后台扫描
-    judge.c_(args.c,args.T)
+    judge.CmsVulScan_judge(args.cms)
 
 
     # 备份文件扫描
-    judge.b_(args.b,args)
+    judge.BP_judge(args.PB,args)
 
+    #后台扫描
+    judge.BK_judge(args.BK,args)
+
+    #端口扫描
+    judge.PS_judge(args.PS, args)
 # 爆破
 
     # 登录界面自动化破解
-    judge.webcrack_(args.crack)
+    judge.webcrack_judge(args.crack)
 
     # ftp
-    judge.ftp(args.ftp,args.p,args.T)
+    judge.ftp_judge(args.ftp,args)
 
-
-
-
+    # ssh
+    judge.ssh_judge(args.ssh, args)
 

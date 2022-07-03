@@ -1,7 +1,7 @@
 from lib import Auxiliary
 from lib.choose_model import Big_Category
 from lib.choose import choose_color_2
-from Activelibrary.backgroundscan import mian
+from Activelibrary.backgroundscan import back
 from rich.console import Console
 from rich.table import Table
 from rich import box
@@ -24,7 +24,7 @@ def Active_Options_Judge(Judge):
     elif Judge=='4':
         url=input(choose_color_2('请输入目标地址> '))
         T = input(UseStyle('请输入请求线程(默认线程30)：', fore='green'))
-        mian.Interface(url,T)
+        back.Interfacemian(url,T)
 
 
 # 被动信息收集选择

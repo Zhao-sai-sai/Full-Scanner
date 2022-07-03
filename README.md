@@ -38,10 +38,12 @@ pip install -r requirements.txt
  - 默认是参数模式
  - -G：选择模式
  
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian111.png)
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian222.png)
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian333.png)
-![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/3.png)
+![mian](https://fastly.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian111.png)
+![mian](https://fastly.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian222.png)
+![mian](https://fastly.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian333.png)
+![mian](https://fastly.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/3.png)
+
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian444.png)
 
 
 
@@ -49,7 +51,7 @@ pip install -r requirements.txt
 
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/fofa111.png)
 
-
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/dns.png)
 
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/sd111.png)
 

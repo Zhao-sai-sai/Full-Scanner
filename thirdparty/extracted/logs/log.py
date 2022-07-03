@@ -1,10 +1,11 @@
 import time, os
 from thirdparty.extracted.conf.config import *
+from conf import config
 
 date = time.strftime('%Y-%m-%d', time.localtime(time.time()))
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), date)
-if not os.path.exists(log_dir):
-    os.mkdir(log_dir)
+# if not os.path.exists(log_dir):
+#     os.mkdir(log_dir)
 
 success_filename = os.path.join(log_dir, logConfig["success_filename"])
 log_filename = os.path.join(log_dir, logConfig["log_filename"])
@@ -29,10 +30,10 @@ def get_time():
 def write_log(filename, msg):
     if lock:
         with lock:
-            with open(filename, "a+", encoding="UTF-8") as log:
+            with open(config.Savelocation['webcrack'], "a+", encoding="UTF-8") as log:
                 log.write(msg + "\n")
     else:
-        with open(filename, "a+", encoding="UTF-8") as log:
+        with open(config.Savelocation['webcrack'], "a+", encoding="UTF-8") as log:
             log.write(msg + "\n")
 
 

@@ -1,4 +1,0 @@
-http://192.168.0.107/EmpireCMS_7.5_SC_UTF8/upload/index.html
-http://192.168.0.107/EmpireCMS_7.5_SC_UTF8/upload/robots.txt
-http://192.168.0.107/EmpireCMS_7.5_SC_UTF8/upload/新建文本文档.txt
-http://192.168.0.107/EmpireCMS_7.5_SC_UTF8/upload/Skin

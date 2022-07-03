@@ -14,6 +14,7 @@ def single_process_crack(url_list):
 
 
 def Interface(url_extract):
+    print("扫描结果会保存到result/webcrack/文件夹里面")
     try:
         import conf.config
     except:

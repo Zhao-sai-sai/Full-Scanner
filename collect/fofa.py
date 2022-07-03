@@ -2,10 +2,14 @@ import  requests
 from lxml import etree
 import base64
 import time
-from conf import config
-from lib.choose import choose_color_2
-from lib.Auxiliary import current_time
+from conf import config # 配置文件
 
+# choose_color_2  随机颜色 UseStyle指定颜色
+from lib.choose import choose_color_2,UseStyle
+
+
+def current_time():
+    return UseStyle(time.strftime("[%Y-%m-%d_%H:%M:%S]: [*]", time.localtime()),fore='blue')
 
 # 提取出来的结果保存起来
 def Searchresults(results_IP):
@@ -96,7 +100,7 @@ def fofa_token():
     return  Cookie_fofa_token
 
 def Interface(z,Cookie):
-    if Cookie==False or Cookie=='': # 使用默认Cookie
+    if Cookie==None or Cookie=='': # 使用默认Cookie
         print(current_time()+"当前你使用的是config.py里面的默认Cookie")
         Cookie = config.SeriousConfig['fofa']
     print(current_time()+"Cookie值是："+Cookie)

@@ -10,8 +10,8 @@ def txt2list(txt):
 
 
 logConfig = {
-    "log_filename": "logs.txt",  # 普通日志文件名称
-    "success_filename": "success.txt",  # 成功日志文件名称
+    "log_filename": "../../logs.txt",  # 普通日志文件名称
+    "success_filename": "../../success.txt",  # 成功日志文件名称
 }
 
 crackConfig = {

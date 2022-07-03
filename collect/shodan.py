@@ -1,8 +1,14 @@
 import shodan
+import time
 from conf import config
+# choose_color_2  随机颜色 UseStyle指定颜色
 from lib.choose import choose_color_2,UseStyle
 from lib.Auxiliary import Sundries
-from lib.Auxiliary import current_time
+
+
+
+def current_time():
+    return UseStyle(time.strftime("[%Y-%m-%d_%H:%M:%S]: [*]", time.localtime()),fore='blue')
 
 # 提取出来的结果保存起来
 def Searchresults(results_IP):
@@ -33,7 +39,7 @@ def shodan_API():
         / __| '_ \ / _ \ / _` |/ _` | '_ \
         \__ \ | | | (_) | (_| | (_| | | | |
         |___/_| |_|\___/ \__,_|\__,_|_| |_|
-    
+
         * 信息收集
         * 1. 输入用第一次的API
          ''')
@@ -45,7 +51,7 @@ def shodan_API():
 
 def shod(host,Shodan_api):
     try:
-        if Shodan_api==False or Shodan_api=='': # 查看你的PCT是否输入参数,没有输入执行
+        if Shodan_api==None or Shodan_api=='': # 查看你的PCT是否输入参数,没有输入执行
             print(current_time()+choose_color_2("当前你使用的是默认config配置文件的API[*]内容：")+str(config.SeriousConfig['shodan']))
 
             Shodan_api=config.SeriousConfig['shodan']

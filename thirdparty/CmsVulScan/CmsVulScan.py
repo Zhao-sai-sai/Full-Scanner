@@ -1,6 +1,6 @@
 import sys
 import threading
-
+from conf import config
 from thirdparty.CmsVulScan.modules.command import command
 from  thirdparty.CmsVulScan.modules.function import *
 from thirdparty.CmsVulScan.modules.Mo_Fun import *
@@ -44,8 +44,8 @@ class main():
 
 
 def Interface(u):
-
     ages = command(u)
+    ages.save_path = config.Savelocation['cms']
     if ages.gen:
         generate()
         sys.exit()

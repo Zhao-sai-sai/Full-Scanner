@@ -1,0 +1,4 @@
+http://127.0.0.1/index.html		文件大小：12.6 KB
+http://127.0.0.1/config.php		文件大小：文件小于1kb
+http://127.0.0.1/link		文件大小：24.6 KB
+http://127.0.0.1/a.php		文件大小：文件小于1kb

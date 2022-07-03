@@ -1,3 +1,4 @@
+python-whois
 requests
 argparse
 ftplib
@@ -5,3 +6,6 @@ shodan
 bs4
 lxml
 threadpool
+googletrans
+whois
+paramiko
