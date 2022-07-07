@@ -28,6 +28,102 @@ git clone  https://github.com/Zhao-sai-sai/Full-Scanner.git
 cd Full-Scanner
 pip install -r requirements.txt
 ```
+## 目录结构
+现在的目录结构
+
+```bash
+Full-Scanner
+├── Full-Scanner.py # main
+├── judge.py # 判断输入的命令
+├── blasting # 爆破的一些脚本
+│   ├── ftp_blasting # ftp破解
+│   │   ├── ftp.py
+│   └── ssh_blasting # ssh破解
+│       └── ssh.py
+├── collect  # 被动搜集的一些脚本
+│   ├── bing.py # bing搜索提取
+│   ├── fofa.py # fofa搜索结果提取
+│   ├── req_whois.py # whois查询
+│   └── shodan.py # shodan信息收集
+│   ├── google.py # 谷歌搜索提取
+│   └── SubDnsDetect # 个采用的一些搜索引擎进行域名探测
+│       ├── bing.py # 用的bing行域名探测
+│       ├── censys.py # 用的censys的证书进行域名探测
+│       ├── crt.py # 用的crt证书进行域名探测
+│       ├── fofa.py # 用的fofa进行域名探测
+│       └── SubDns.py # mian
+├── conf # 配置文件
+│   ├── config.py
+├── dictionary # 存在着字典
+│   ├── back 
+│   ├── BackgroundDetection
+│   ├── Backupfilescan
+│   ├── extracted
+│   ├── ftp
+│   └── ssh
+├── Initiative # 主动信息收集的一些脚本
+│   ├── backgroundscan # 后台扫描
+│   │   ├── back.py
+│   ├── Backupfilescan # 备份文件扫描
+│   │   ├── ProbeBackup.py
+│   └── portscan # 端口扫描
+│       ├── port.py
+├── lib # 脚本需要的一些脚本
+│   ├── Auxiliary.py  # 杂东西
+│   ├── choose.py  # 调用颜色
+│   ├── cmdline
+│   │   ├── cmdline.py # 命令行参数和图标
+│   ├── choose_model  # 选项模式
+│   │   ├── Big_Category.py
+│   │   └── sub_options
+│   │       ├── Active_Options.py
+│   │       ├── blasting_Options.py
+│   │       ├── Passive_Options.py
+├── other # 其他脚本
+│   └── portquery # 查看端口对应的服务
+│       ├── potrquery.py
+│       └── tcpudp.py
+├── PocAndExpScript # 自己脚本或者POCEXP生成到工具里面
+│   ├── generate #自己的脚步
+│   │  
+│   ├── main.py # 生成文件的关键文件 
+│   ├── pecmdline
+│   │   ├── pecmdline.py　# 命令行参数
+│   ├── storage.py # 调研判断类似上面的 ├── judge.py # 判断输入的命令
+│   └── storage.txt # 添加语法多次添加
+├── result # 用于存放扫描下来的结果
+│   ├── back
+│   ├── cms
+│   ├── fofa
+│   ├── ftp
+│   ├── ProbeBackup
+│   ├── searchengine
+│   ├── shodan
+│   ├── ssh
+│   ├── webcrack
+│   └── whois
+└── thirdparty # 用到的其他人写的工具
+```
+
+## 导入自己的脚本
+叫文件方到`PocAndExpScript/generate`
+导入的时候他会按照下面的方式进行导入
+比如
+```bash
+he_lp={
+    'filename':'CVE-2022-26134', # filename漏洞编号，这个将变成命令参数使用最好不要用中文
+    'main':'main', # main这个就是接口函数
+    'name':'CVE-2022-26134Confluence远程命令执行漏洞', # name 这个是这个漏洞代码的说明
+    'important':['u'], # important就是必要要用的参数
+    'u':'目标', # 其他的都会当做参数来用
+    .......
+}
+```
+
+演示：
+
+![mian](https://fastly.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/yanshi.gif)
+
 
 
 ## 现在啥也不是凑合看吧
@@ -37,7 +133,7 @@ pip install -r requirements.txt
 > 界面我用来两种格式
  - 默认是参数模式
  - -G：选择模式
- 
+
 ![mian](https://fastly.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian111.png)
 ![mian](https://fastly.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian222.png)
 ![mian](https://fastly.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/mian333.png)
@@ -58,7 +154,7 @@ pip install -r requirements.txt
 
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/crack111.png)
 
-
+![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/wh.png)
 
 ![mian](https://cdn.jsdelivr.net/gh/Zhao-sai-sai/Full-Scanner/img/cms111.png)
 

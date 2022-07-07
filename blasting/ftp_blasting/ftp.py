@@ -102,7 +102,7 @@ def fill_in(args):
         print("当前使用指定密码字典文件在：" + passwd)
 
 
-    if port==None or port=='':
+    if port==None:
         port=21
         print("当前使用的默认端口21")
     else:
@@ -111,9 +111,9 @@ def fill_in(args):
         quantity=1
         print("当前使用的默认线程1")
     else:
-        print("当前指定的线程数："+quantity)
+        print("当前指定的线程数："+str(quantity))
     port = int(port)
     quantity = int(quantity)
 
     print(UseStyle("现在扫描的是"+(ip+ "端口是" + str(port)),mode='underline',fore='red'))
-    Thread(ip,21,quantity,admin,passwd)
+    Thread(ip,port,quantity,admin,passwd)

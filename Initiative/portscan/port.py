@@ -38,11 +38,11 @@ def socketk(Host,Port_):
         try:
             s.connect((Host,int(port)))
             #s.recv(4096)
-            print(f'{current_time()}进度[{count}/{schedule}]：开发端口：{port}')
+            print(UseStyle(f'\n\n开发端口：{port}\n', fore='green'))
             count += 1
         except :
             count += 1
-            print(f"{current_time()}进度[{count}/{schedule}]：","\r", end='')
+            print(f"\r{current_time()}进度[{count}/{schedule}]：", end='')
             #pass
 
         #关闭套接字

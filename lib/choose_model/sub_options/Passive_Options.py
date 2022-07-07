@@ -1,10 +1,10 @@
-from collect import shodan,fofa
 from lib import Auxiliary
 from lib.choose_model import Big_Category
 from lib.choose import choose_color_2
 from rich.console import Console
 from rich.table import Table
 from rich import box
+from lib.cmdline import cmdline  # 图标
 
 
 
@@ -16,16 +16,27 @@ def Passive_Options_Judge(Judge):
         Auxiliary.Terminal_clear()  # 终端清空
         print("退出了")
         return
-    if Judge=='q':
+    if Judge=='q': # 返回上一层
         Big_Category.Category()
-    elif Judge=='1':
+
+    elif Judge=='1': # fofa查询
+        from collect import  fofa
         url=input(choose_color_2('请输入目标地址：'))
         Cookie = input(choose_color_2('请输Cookie值回车用config.py的值：'))
         fofa.Interface(url,Cookie)
-    elif Judge=='2':
+
+    elif Judge=='2': # shodan
+        from collect import shodan
         host=input(choose_color_2('请输入目标地址：'))
         API = input(choose_color_2('请输API(如果不输入直接回车默认使用配置config文件的)：'))
         shodan.shod(host,API)
+
+    elif Judge == '3':  # shodan
+        args = cmdline.help_h()
+
+        from collect import req_whois
+        args.whois=input(choose_color_2('请输入查询的域名：'))
+        req_whois.Interface(args)
 
 # 被动信息收集选择
 def Passive_Information_Gathering():
@@ -41,6 +52,7 @@ def Passive_Information_Gathering():
 
     table.add_row("|1|", "fofa子域名探测")
     table.add_row("|2|", "shodan信息收集")
+    table.add_row("|3|", "whois查询")
     table.add_row("|q|", "返回上一层")
     table.add_row("|Q|", "退出")
 

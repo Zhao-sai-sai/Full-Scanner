@@ -28,8 +28,7 @@ def DNS_Climb_censys(DNS):
             url=f"https://search.censys.io/certificates/_search?q={DNS}&page={i}"
             html=requests.get(url=url,headers=headers,verify=False)
             soup = BeautifulSoup(html.text, 'lxml')
-            dns_ = soup.find_all(text=re.compile(r".zssnp.top"))
-
+            dns_ = soup.find_all(text=re.compile(rf"{DNS}"))
             for i in dns_: # 临时发挥写的现在我也懵看不太懂
                 a=re.sub('\*=', '', i)
                 a=a.split(',')[0]

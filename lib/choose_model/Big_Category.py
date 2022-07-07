@@ -33,7 +33,6 @@ def Category():
 
     table.add_row("|1|", "被动信息收集")
     table.add_row("|2|", "主动信息收集")
-    table.add_row("|3|", "CDN识别")
     table.add_row("|4|", "暴力破解")
     table.add_row("|5|", "POC和EXP")
     table.add_row("|Q|", "退出")

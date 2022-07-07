@@ -56,8 +56,11 @@ Savelocation={
     # whois保存
     'whois': f'result/whois/whoislog.txt',
 
+    # bing
+    'bing': f'result/searchengine/{current_time}bing.txt',
+
     # google
-    'bing': f'result/searchengine/{current_time}.txt',
+    'google': f'result/searchengine/{current_time}google.txt',
 
     # 备份文件扫描保存
     'ProbeBackup':f'result/ProbeBackup/{current_time}ProbeBackup.txt',

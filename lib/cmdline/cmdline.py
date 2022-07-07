@@ -197,12 +197,12 @@ class SmartFormatter(argparse.HelpFormatter):
         return argparse.HelpFormatter._split_lines(self, text, width)
 
 def help_h():
-    parser = argparse.ArgumentParser(description='本程序是一个多功能工具，支持信息收集，爆破，漏洞扫描，常见的POC和EXP',
+    parser = argparse.ArgumentParser(description='本程序是一个多功能工具、支持信息收集、爆破、漏洞扫描、常见的POC和EXP',
                                      usage=choose_color_2('python3 Full-Scanner.py [参数] [目标] [其他参数]'),
                                      formatter_class=SmartFormatter)
     # 选择模式
     Choose_cmdline=parser.add_argument_group(choose_color_2("选择模式"),
-                                            "如果不喜欢输入命令那样，可以用下面的参数") # 子选项
+                                            "如果不喜欢输入命令那样、可以用下面的参数") # 子选项
 
     Choose_cmdline.add_argument("-G",action="store_true",
                                 help="选择使用选择模式")
@@ -213,7 +213,7 @@ def help_h():
     parser.add_argument_group(UseStyle("[1][*]被动信息收集",fore='green'),
                                             "下面是常见的被动信息收集方法会利用各大搜索引擎") # 子选项
     # Passive_collect_message.add_argument("-passive",
-    #                                     help="被动信息收集，会利用fofa,shodan进行信息收集",
+    #                                     help="被动信息收集、会利用fofa,shodan进行信息收集",
     #                                     action="store_true")
 
     # fofa子域名探测
@@ -230,7 +230,7 @@ def help_h():
                                               dest='cookie',
                                               type=str,
                                               nargs='?',
-                                              help="Cookie需要验证，如果不想每次都指定可以去config.py文件里面添加",)
+                                              help="Cookie需要验证、如果不想每次都指定可以去config.py文件里面添加",)
 
     # shodan信息收集
     Shodan_Passive_collect_message = parser.add_argument_group(UseStyle("[1]被动信息收集：[2]shodan信息收集", fore='green'))
@@ -245,47 +245,33 @@ def help_h():
                                                  dest='api',
                                                  type=str,
                                                  nargs='?',
-                                                 help="用-API参数指定，如果不想每次都指定可以去config.py文件里面添加")
-    # zoomeye信息收集
-    Zoomeye_Passive_collect_message = parser.add_argument_group(UseStyle("[1]被动信息收集：[3]shodan信息收集", fore='green'))
-    Zoomeye_Passive_collect_message.add_argument("-zoomeye",
-                                                 metavar='查询关键词',
-                                                 dest='shodan',
-                                                 type=str,
-                                                 nargs='?',
-                                                 help="zoomeye信息收集")
-    Zoomeye_Passive_collect_message.add_argument("-zoomeyeapi",
-                                                 metavar='api值',
-                                                 dest='zoomeyeapi',
-                                                 type=str,
-                                                 nargs='?',
-                                                 help="用-API参数指定，如果不想每次都指定可以去config.py文件里面添加")
+                                                 help="用-API参数指定、如果不想每次都指定可以去config.py文件里面添加")
 
 
     # whois查询
-    whois_Passive_collect_message = parser.add_argument_group(UseStyle("[1]被动信息收集：[4]whois查询", fore='green'))
+    whois_Passive_collect_message = parser.add_argument_group(UseStyle("[1]被动信息收集：[3]whois查询", fore='green'))
     whois_Passive_collect_message.add_argument("-whois",
                                             metavar='域名',
                                             dest='whois',
                                             type=str,
                                             nargs='?',
-                                            help="whois查询，咧-whois https://www.baidu.com/")
+                                            help="whois查询、咧-whois https://www.baidu.com/")
     # bing爬取
-    SE_collect_message = parser.add_argument_group(UseStyle("[1]被动信息收集：[5]搜索引擎爬虫", fore='green'),
+    SE_collect_message = parser.add_argument_group(UseStyle("[1]被动信息收集：[4]搜索引擎爬虫", fore='green'),
                                                                    "下面这个会用一下搜索引擎进行搜索提取搜索的URL")
     SE_collect_message.add_argument("-bing",
                                    metavar='查询语句',
                                    dest='bing',
                                    type=str,
                                    nargs='?',
-                                   help="""搜索引擎爬虫，咧 -bing 'intitle:后台登陆 "学院"' """)
+                                   help="""搜索引擎爬虫、咧 -bing 'intitle:后台登陆 "学院"' """)
 
     SE_collect_message.add_argument("-bingm",
                                    metavar='提取的页数',
                                    dest='bingm',
                                    type=int,
                                    nargs='?',
-                                   help="""提取的页数如果不指定默认就是100000，咧 -bingm 5 """)
+                                   help="""提取的页数如果不指定默认就是100000、咧 -bingm 5 """)
     # bing爬取
     google_collect_message = parser.add_argument_group(UseStyle("[1]被动信息收集：[5]搜索引擎爬虫", fore='green'),
                                                                    "下面这个会用一下搜索引擎进行搜索提取搜索的URL")
@@ -294,24 +280,24 @@ def help_h():
                                    dest='google',
                                    type=str,
                                    nargs='?',
-                                   help="""搜索引擎爬虫，咧 -google 'intitle:后台登陆 "学院"' """)
+                                   help="""搜索引擎爬虫、咧 -google 'intitle:后台登陆 "学院"' """)
 
     google_collect_message.add_argument("-googlem",
                                    metavar='提取的页数',
                                    dest='googlem',
                                    type=int,
                                    nargs='?',
-                                   help="""提取的页数如果不指定默认就是100000，咧 -google 5 """)
+                                   help="""提取的页数如果不指定默认就是100000、咧 -google 5 """)
     google_collect_message.add_argument("-googlep",
                                    metavar='代理地址',
                                    dest='googlep',
                                    type=str,
                                    nargs='?',
-                                   help="""设置代理，咧 -googlep 127.0.0.1:8080 """)
+                                   help="""设置代理、咧 -googlep 127.0.0.1:8080 """)
 
     # bing爬取
     SubDNS_collect_message = parser.add_argument_group(UseStyle("[1]被动信息收集：[6]子域名查询", fore='green'),
-                                                                   "这个采用的一些搜索引擎进行域名探测有bing、crtsh、fofa、censys等，不需要输入API这个是采集的查询结果的页面进行提取的")
+                                                                   "这个采用的一些搜索引擎进行域名探测有bing、crtsh、fofa、censys等、不需要输入API这个是采集的查询结果的页面进行提取的")
     SubDNS_collect_message.add_argument("-SubDNS",
                                    metavar='域名',
                                    dest='SubDNS',
@@ -338,7 +324,7 @@ def help_h():
                                                 metavar='URL',
                                                 type=str,
                                                 nargs='?',
-                                                help="""备份文件扫描 指定扫描的目标，比如 -PB https://baidu.com/""")
+                                                help="""备份文件扫描 指定扫描的目标、比如 -PB https://baidu.com/""")
     Backup_Active_collect_message.add_argument('-PBm',
                                                 dest='PBm',
                                                 metavar='文件名',
@@ -357,7 +343,12 @@ def help_h():
                                               type=str,
                                               nargs='?',
                                               help="指定字典默认是自己生成")
-
+    Backup_Active_collect_message.add_argument('-PBp',
+                                              dest='PBp',
+                                              metavar='代理地址',
+                                              type=str,
+                                              nargs='?',
+                                              help="可选代理地址")
 
 
 
@@ -370,7 +361,7 @@ def help_h():
                                             dest='BK',
                                             type=str,
                                             nargs='?',
-                                            help="后台扫描，指定扫描的目标，比如 -BK https://baidu.com/")
+                                            help="后台扫描、指定扫描的目标、比如 -BK https://baidu.com/")
     Back_Active_collect_message.add_argument('-BKm',
                                             metavar='文件名',
                                             dest='BKm',
@@ -401,19 +392,40 @@ def help_h():
 
     # 端口扫描
 
+    C_segment_query_Active_collect_message = parser.add_argument_group(UseStyle("[2]主动信息收集：[5]C段查询", fore="yellow"))
+    C_segment_query_Active_collect_message.add_argument("-CPS",
+                                            metavar='IP',
+                                            dest='CPS',
+                                            type=str,
+                                            nargs='?',
+                                            help="端口扫描、比如 -PS 1.1.1.1")
+    C_segment_query_Active_collect_message.add_argument('-CPSp',
+                                            metavar='指定端口',
+                                            dest='CPSp',
+                                            type=str,
+                                            nargs='?',
+                                            help="指定端口、不指定默认常见的端口、指定比如-PSp 1-65535或者22,80,3306")
+    C_segment_query_Active_collect_message.add_argument('-CPSt',
+                                            metavar='线程数',
+                                            dest='CPSt',
+                                            type=int,
+                                            nargs='?',
+                                            help="指定线程、线程太多会出问题")
+    # 端口扫描
+
     Port_Active_collect_message = parser.add_argument_group(UseStyle("[2]主动信息收集：[4]端口扫描", fore="yellow"))
     Port_Active_collect_message.add_argument("-PS",
                                             metavar='IP',
                                             dest='PS',
                                             type=str,
                                             nargs='?',
-                                            help="端口扫描，比如 -PS 1.1.1.1")
+                                            help="端口扫描、比如 -PS 1.1.1.1")
     Port_Active_collect_message.add_argument('-PSp',
                                             metavar='指定端口',
                                             dest='PSp',
                                             type=str,
                                             nargs='?',
-                                            help="指定端口，不指定默认常见的端口，指定比如-PSp 1-65535或者22,80,3306")
+                                            help="指定端口、不指定默认常见的端口、指定比如-PSp 1-65535或者22,80,3306")
     Port_Active_collect_message.add_argument('-PSt',
                                             metavar='线程数',
                                             dest='PSt',
@@ -441,7 +453,7 @@ def help_h():
     #                           default=0)
 # 爆破
     parser.add_argument_group(UseStyle("[3][*]爆破",fore="blue"),
-                                        "下面是常见，web爆破，和服务的爆破")
+                                        "下面是常见、web爆破、和服务的爆破")
 
     # 网页
     Crack_Blasting=parser.add_argument_group(UseStyle("[3]爆破：[1]网页登录界面自动化破解",fore="blue"))
@@ -450,7 +462,7 @@ def help_h():
                                 dest='crack',
                                 type=str,
                                 nargs='?',
-                                help="登录界面自动化破解，比如-crack https://xxx.com/admin.php")
+                                help="登录界面自动化破解、比如-crack https://xxx.com/admin.php")
 
     # ftp
     Ftp_Crack_Blasting = parser.add_argument_group(UseStyle("[3]爆破：[2]ftp爆破", fore="blue"))
@@ -459,7 +471,7 @@ def help_h():
                                     dest='ftp',
                                     type=str,
                                     nargs='?',
-                                    help="ftp爆破，比如-ftp 1.1.1.1")
+                                    help="ftp爆破、比如-ftp 1.1.1.1")
     Ftp_Crack_Blasting.add_argument("-ftpp",
                                     metavar='指定端口号',
                                     dest='ftpp',
@@ -477,47 +489,76 @@ def help_h():
                                     dest='ftpadmin',
                                     type=str,
                                     nargs='?',
-                                    help="指定用户字典，不指定使用默认")
+                                    help="指定用户字典、不指定使用默认")
     Ftp_Crack_Blasting.add_argument("-ftppasswd",
                                     metavar='文件名',
                                     dest='ftppasswd',
                                     type=str,
                                     nargs='?',
-                                    help="指定密码字典，不指定使用默认")
+                                    help="指定密码字典、不指定使用默认")
     # ssh
-    SSH_Crack_Blasting = parser.add_argument_group(UseStyle("[3]爆破：[1]SSH破解", fore="blue"))
+    SSH_Crack_Blasting = parser.add_argument_group(UseStyle("[3]爆破：[3]SSH破解", fore="blue"))
 
     SSH_Crack_Blasting.add_argument('-ssh',
                                     metavar='目标地址',
                                     dest='ssh',
                                     type=str,
                                     nargs='?',
-                                    help="ssh密码怕破解，比如 -ssh 1.1.1.1")
-    Ftp_Crack_Blasting.add_argument("-sshp",
+                                    help="ssh密码怕破解、比如 -ssh 1.1.1.1")
+    SSH_Crack_Blasting.add_argument("-sshp",
                                     metavar='指定端口号',
                                     dest='sshp',
                                     type=str,
                                     nargs='?',
-                                    help="指定端口")
+                                    help="指定端口、默认端口号22")
     SSH_Crack_Blasting.add_argument('-sshu',
                                     metavar='指定字典',
                                     dest='sshu',
                                     type=str,
                                     nargs='?',
-                                    help="指定用户名字典")
+                                    help="指定用户名字典、不指定使用默认字典")
     SSH_Crack_Blasting.add_argument('-sshd',
                                     metavar='指定字典',
                                     dest='sshd',
                                     type=str,
                                     nargs='?',
-                                    help="指定密码字典默认是用的php.txt")
+                                    help="指定密码字典、不指定使用默认字典")
 
     SSH_Crack_Blasting.add_argument('-ssht',
                                     dest='ssht',
                                     metavar='线程数',
                                     type=int,
                                     nargs='?',
-                                    help="指定线程、线程太多会出问题")
+                                    help="指定线程、线程太多会出问题、默认线程1")
+
+# # 其他
+    parser.add_argument_group(UseStyle("[*]其他：小工具", fore="blue"),"")
+    portquery_Blasting = parser.add_argument_group(UseStyle("其他：端口查询对应的服务", fore="cyan"))
+    portquery_Blasting.add_argument("-tcp",
+                                    metavar='端口',
+                                    dest='tcp',
+                                    type=str,
+                                    nargs='?',
+                                    help="tcp查询")
+    portquery_Blasting.add_argument("-udp",
+                                    metavar='端口',
+                                    dest='udp',
+                                    type=str,
+                                    nargs='?',
+                                    help="udp查询")
+    # # POC，EXP
+
+    from PocAndExpScript.pecmdline import pecmdline
+    parser=pecmdline.help_h(parser)
+
+#     Other_Crack_Blasting = parser.add_argument_group(UseStyle("其他：[2]代理采集", fore="cyan"))
+#     Other_Crack_Blasting.add_argument("-PSC",
+#                                     metavar='指定采集域名',
+#                                     dest='PSC',
+#                                     type=str,
+#                                     default=False,
+#                                     nargs='?',
+#                                     help="代理地址采集")
     # # 漏洞验证和利用
     # Vulnerability_Scan=parser.add_argument_group(choose_color_2("POC和EXP"))
     #
@@ -539,18 +580,20 @@ def help_h():
     # Choose=parser.add_argument_group(choose_color_2("其他参数"),
     #       "上面的参数有的可能会用到的") # 子选项
     # Choose.add_argument("-p",
-    #                     help="指定端口，指定参数不添加参数默认扫描全端口",
+    #                     help="指定端口、指定参数不添加参数默认扫描全端口",
     #                     default = False)
     # Choose.add_argument("-T",
     #                     help="设置速度/线程",
     #                     default = False)
     # Choose.add_argument("-Cookie",
-    #                     help="Cookie需要验证,比如Fofa，如果不想每次都指定可以去config.py文件里面添加",
+    #                     help="Cookie需要验证,比如Fofa、如果不想每次都指定可以去config.py文件里面添加",
     #                     default = False)
     # Choose.add_argument("-API",
-    #                     help="指定API，比如shodan就需要自己的API，如果不想每次都指定可以去config.py文件里面添加",
+    #                     help="指定API、比如shodan就需要自己的API、如果不想每次都指定可以去config.py文件里面添加",
     #                     default = False)
 
 
 
     return parser.parse_args()
+
+

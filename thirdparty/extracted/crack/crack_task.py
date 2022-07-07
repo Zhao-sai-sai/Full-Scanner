@@ -1,5 +1,4 @@
 import requests
-
 from thirdparty.extracted.generator.dict import *
 from thirdparty.extracted.generator.header import get_random_headers
 from thirdparty.extracted.conf.config import *

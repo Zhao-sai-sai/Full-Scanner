@@ -8,6 +8,7 @@ def Terminal_clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+
 def current_time():
     return UseStyle(time.strftime("[%Y-%m-%d_%H:%M:%S]: [*]", time.localtime()),fore='blue')
 

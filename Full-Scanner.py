@@ -23,8 +23,8 @@ if __name__ == '__main__':
     judge=judge.whether()
 
 
-# #选择使用选择模式
-#     judge.G_(args.G)
+#选择使用选择模式
+    judge.G_(args.G)
 
 # 被动信息收集
     # fofa
@@ -42,6 +42,8 @@ if __name__ == '__main__':
     # DNS查询
     judge.SubDNS_judge(args.SubDNS, args)
 
+    # google
+    judge.Google_judge(args.google,args)
 # 主动信息收集
     #cms探测
     judge.CmsVulScan_judge(args.cms)
@@ -66,3 +68,14 @@ if __name__ == '__main__':
     # ssh
     judge.ssh_judge(args.ssh, args)
 
+# 其他
+
+    #端口对应服务查询
+
+    judge.portquery_judge(args.tcp,args)
+    judge.portquery_judge(args.udp,args)
+
+    #judge.Acting_judge(args.PSC)
+
+# PE
+    judge.PE_judge(args.PE,args.refresh,args.reset,args)

@@ -1,5 +1,6 @@
+from conf import config # 配置文件
 import os
-from conf import config
+
 
 def txt2list(txt):
     ret = []
@@ -30,11 +31,13 @@ crackConfig = {
                    '非法', '百度云加速', '安全威胁', '防火墙', '黑客', '不合法', 'Denied', '尝试次数',
                    'http://safe.webscan.360.cn/stopattack.html', "Illegal operation", "服务器安全狗防护验证页面"]  # 黑名单关键字
 }
+
+
 generatorConfig = {
     "dict_config": {
         "base_dict": {
-            "username_list": txt2list(config.Specifyablastdictionary['extracted']['admin']),  # 爆破用户名字典
-            "password_list": txt2list(config.Specifyablastdictionary['extracted']['passwd'])  # 爆破密码字典
+            "username_list": txt2list('dictionary/extracted/admin.txt'),  # 爆破用户名字典
+            "password_list": txt2list('dictionary/extracted/passwd.txt')  # 爆破密码字典
 
         },
         "domain_dict": {

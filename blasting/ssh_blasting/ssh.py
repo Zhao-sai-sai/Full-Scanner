@@ -61,7 +61,7 @@ def try_to_log_in(Thread,host,port):
                 # 连接
                 ssh_client.connect(hostname=host, port=int(port),username=user_passwd[0],password=user_passwd[1], timeout=1)
                 ssh_client.close()
-                print(current_time()+'[OK] 用户名' + user_passwd[0] +'密码'+ user_passwd[1])
+                print(UseStyle(current_time()+'[OK] 用户名' + user_passwd[0] +'密码'+ user_passwd[1], fore='green'))
                 Searchresults(f'[OK] {host}\t{str(port)}\t{user_passwd[0]}\t{user_passwd[1]}')
                 pause = True  # 破解成功用于暂程和禁止输出的
                 break
@@ -71,6 +71,11 @@ def try_to_log_in(Thread,host,port):
                 else:
                     schedule+=1
                     print(UseStyle(current_time()+f"密码错误进度{schedule}/{count}：",fore='yellow')+UseStyle(f"用户{user_passwd[0]}密码{user_passwd[1]}",fore='red'))
+            except paramiko.ssh_exception.NoValidConnectionsError:
+                print("目标端口没有开放")
+                pause = True
+            except paramiko.ssh_exception.SSHException:
+                print("线程太大了！")
             finally:
                 ssh_client.close() # 关闭连接
 
@@ -99,13 +104,13 @@ def Interface(args):
     if args.user == None: # 默认用户字典
         #args.user=config.Specifyablastdictionary['ssh']['admin']
         args.user = config.Specifyablastdictionary['ssh']['admin']
-        user="当前使用的默认用户字典："+args.user
+        user="当前使用的默认用户字典："+config.Specifyablastdictionary['ssh']['admin']
     else:
         user="当前使用指定用户字典文件在：" +args.user
 
     if args.document == None: # 默认密码字典
         args.document = config.Specifyablastdictionary['ssh']['passwd']
-        document="当前使用的默认密码字典：" + args.document
+        document="当前使用的默认密码字典：" + config.Specifyablastdictionary['ssh']['passwd']
     else:
         document="当前使用的默认密码字典文件在：" + args.document
 
@@ -122,5 +127,5 @@ def Interface(args):
     else:
         port="当前指定端口"+str(args.port)
 
-    print(UseStyle(f'破解成功结果保存到{config.Savelocation["ssh"]}\n{user}\n{document}\n{thread}\n{port}',fore='red'))
+    print(UseStyle(f'破解成功结果保存到{config.Savelocation["ssh"]}\n{user}\n{document}\n{thread}\n{port}\n\n',fore='red'))
     Thread(args)

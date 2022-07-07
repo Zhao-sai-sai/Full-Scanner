@@ -25,7 +25,7 @@ def Climb_bing(keywords,amount):
 
     for i in range(0, int(amount)):
 
-        print(f'\033[0;33m {"—" * 60}\033[0m\n正在爬取第：{i+1}页')
+        print(f'\033[0;33m {"*" * 60}\033[0m\n正在爬取第：{i+1}页')
         url = f"https://cn.bing.com/search?q={keywords}&go=%E6%90%9C%E7%B4%A2&qs=ds&first={i}1&FORM=PERE1"
         try:
             html = requests.get(url=url, headers=config.HeadersConfig, verify=False, timeout=5)
@@ -53,7 +53,7 @@ def Interface(args):
     else:
         amount = args.bingm
 
-    print(UseStyle(f"\n扫描结果保存在{config.Savelocation['bing']}文件夹下\n搜索的关键字是：{keywords}\n页数：{amount}",fore='red')+f'\n\033[0;33m {"—" * 60}')
+    print(UseStyle(f"\n扫描结果保存在{config.Savelocation['bing']}文件夹下\n搜索的关键字是：{keywords}\n页数：{amount}",fore='red')+f'\n\033[0;33m {"*" * 60}')
     time.sleep(3)  # 暂停 3 秒
     Climb_bing(keywords, amount)
 

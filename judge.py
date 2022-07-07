@@ -9,11 +9,11 @@
 
 
 class whether():
-    # # 选择使用选择模式
-    # def G_(G):
-    #     if G==True:
-    #         Big_Category.Category()
-
+    # 选择使用选择模式
+    def G_(self,G):
+        if G==True:
+            from lib.choose_model import Big_Category
+            Big_Category.Category()
 
     # 被动信息收集
     # fofa_
@@ -48,48 +48,58 @@ class whether():
         from collect import bing
         if google_Parameter !=None:
             bing.Interface(args)
-
+    # dns
     def SubDNS_judge(self,SubDNS_Parameter,args):
         from collect.SubDnsDetect import SubDns
         if SubDNS_Parameter!=None:
             #print(SubDNS_Parameter)
             SubDns.DNS_Interface(args)
+    # dns
+    def Google_judge(self,SubDNS_Parameter,args):
 
+        if SubDNS_Parameter!=None:
+            from collect import google
+            #print(SubDNS_Parameter)
+            google.Interface(args)
     # # 主动信息收集
 
     # cms识别
     def CmsVulScan_judge(self,Cms_Parameter):
-        from thirdparty.CmsVulScan import CmsVulScan
+
 
         try:
             if Cms_Parameter!=None:
+                from thirdparty.CmsVulScan import CmsVulScan
                 CmsVulScan.Interface(Cms_Parameter)
         except Exception as bc:
                 print("有错误！错误提示" + str(bc))
 
     # 备份文件扫描
     def BP_judge(self,BP,args):
-        from Initiative.Backupfilescan import ProbeBackup
+
         try:
             if BP != None:
+                from Initiative.Backupfilescan import ProbeBackup
                 ProbeBackup.Interface(args)
         except Exception as bc:
             print("有错误！错误提示" + str(bc))
 
     # 后台扫描
     def BK_judge(self,BK,args):
-        from Initiative.backgroundscan import back
-        try:
-            if BK != None:
-                back.Interfacemian(args)
-        except Exception as bc:
-                print("有错误！错误提示" + str(bc))
+
+        # try:
+        if BK != None:
+            from Initiative.backgroundscan import back
+            back.Interfacemian(args)
+        # except Exception as bc:
+        #         print("有错误！错误提示" + str(bc))
 
     # 端口扫描
     def PS_judge(self,PS,args):
-        from Initiative.portscan import port
+
         try:
             if PS != None:
+                from Initiative.portscan import port
                 port.Interface(args)
         except Exception as bc:
             print("有错误！错误提示" + str(bc))
@@ -99,30 +109,63 @@ class whether():
     # 暴力破解
     # 登录界面爆破
     def webcrack_judge(self,Crack_Parameter):
-        from thirdparty.extracted import webcrack
+
 
         try:
             if Crack_Parameter!=None:
+                from thirdparty.extracted import webcrack
                 webcrack.Interface(Crack_Parameter)
         except Exception as bc:
             print("有错误！错误提示" + str(bc))
     #
     #  Ftp爆破
     def ftp_judge(self,Ftpcrack_Parameter,args):
-        from blasting.ftp_blasting import ftp
-        try:
-            if Ftpcrack_Parameter !=None:
-                ftp.fill_in(args)
-        except Exception as bc:
-            print("有错误！错误提示" + str(bc))
+
+        #try:
+        if Ftpcrack_Parameter !=None:
+            from blasting.ftp_blasting import ftp
+            ftp.fill_in(args)
+        # except Exception as bc:
+        #     print("有错误！错误提示" + str(bc))
 
     #  ssh爆破
     def ssh_judge(self,ssh_crack,args):
-        from blasting.ssh_blasting import ssh
+
         try:
 
             if ssh_crack !=None:
+                from blasting.ssh_blasting import ssh
                 #print(ssh_crack)
                 ssh.Interface(args)
         except Exception as bc:
             print("有错误！错误提示" + str(bc))
+    # # 其他
+    # 端口对应服务查询
+    def portquery_judge(self,Portquery_Parameter,args):
+        if Portquery_Parameter!=None:
+            from other.portquery import potrquery
+            potrquery.Interfacemian(args)
+
+
+
+    # def Acting_judge(self,PSC_Parameter):
+    #     from other.acting import Agentmian
+    #     if PSC_Parameter != False:
+    #         print("dsads")
+
+
+    # POC/EXP
+    def PE_judge(self,PEP_Parameter,refresh_Paramete,reset_Paramete,args):
+
+
+        if PEP_Parameter!=False: #使用POC/EXP
+            from PocAndExpScript import storage # 调用
+            storage.whether(args)
+
+        elif refresh_Paramete!=False: # 更新POC/EXP
+            from PocAndExpScript import main
+            main.Interface()
+
+        elif reset_Paramete!=False: # 重置
+            from PocAndExpScript import main
+            main.default()

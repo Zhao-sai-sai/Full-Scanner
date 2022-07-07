@@ -80,34 +80,59 @@ def ask(search_url,url,proxies):
             #print(config.HeadersConfig)
             global schedule
 
-            print(current_time() + f"进度: {schedule}/{count}",end='\r')
+            print(f"\r{current_time()} 进度: [{schedule}/{count}]",end='')
             #back=requests.get(url+i,headers=config.HeadersConfig)
             back = urllib.request.Request(url=(url+quote(searchurl)), headers=config.HeadersConfig, method='GET')
 
-            # if proxies != None:
-            #
-            #     response = proxies.open(back, timeout=7) # 代理请求
+            if proxies != None:
 
-            response = urllib.request.urlopen(back, )
-            #print()
+                # 使用选择的代理构建代理处理器对象
+                httpproxy_handler = urllib.request.ProxyHandler(proxies)
+
+                # 通过 urllib.request.build_opener(),创建自定义opener对象
+                opener = urllib.request.build_opener(httpproxy_handler)
+
+                #发送代理请求
+                response = opener.open(back, timeout=7) # 代理请求
+
+            else:
+                response = urllib.request.urlopen(back, timeout=7)
+
             if response.status==200:
                 schedule+=1
-                #print(current_time()+UseStyle(f"请求第[{str(schedule)}]这个地址存在："+url+searchurl,fore='green'))
-                #print("\r", end="")
-                #Searchresults(url + searchurl)
-                #print(current_time()+f"进度: {schedule}/{count}",end='\r')
+
+                print(UseStyle(
+                    f"\t\t\t\t\t\n\n{'*' * 20}\n请求这个地址存在：" + url + searchurl + f"\n{'*' * 20}\n\n",
+                    fore='green'))
+
+
+                #print(+)
+                # print("\r", end="")
+                # Searchresults(url + searchurl)
+                # print('\r'+current_time()+f"进度: {schedule}/{count}",end='')
+
+
             elif response.status==301:
                 schedule += 1
-                #print(current_time()+UseStyle(f"请求第[{str(schedule)}]这个地址存在："+url+searchurl,fore='green'))
-                #print("\r", end="")
-                #Searchresults(url + searchurl)
-                #print(current_time()+f"进度: {schedule}/{count}",end='\r')
+
+                print(UseStyle(
+                    f"\t\t\t\t\t\n\n{'*' * 20}\n请求这个地址存在：" + url + searchurl + f"\n{'*' * 20}\n\n",
+                    fore='green'))
+
+                #print(current_time() + UseStyle(f"请求第[{str(schedule)}]这个地址存在：" + url + searchurl, fore='green'))
+                # print("\r", end="")
+                # Searchresults(url + searchurl)
+                # print('\r'+current_time()+f"进度: {schedule}/{count}",end='')
+
         except error.HTTPError as cw:
             if str(cw) in "HTTP Error 404: Not Found":  # 报错404的
                 schedule += 1
             if str(cw) in "<urlopen error [Errno 113] No route to host>": # 报错超时的
                 print('\n目标未7响应时间超时了！')
                 break
+        except Exception as bc:
+            print("未知错误！" + str(bc))
+
             #print(UseStyle(f'请求第[{str(schedule)}][*]这个地址不存在：',fore='yellow')+UseStyle(url+searchurl+'\t\t\t\t\t[*]'+"状态码："+str(e.code),fore='red'))
 
 def Thread(url,T,document,proxies):
@@ -140,21 +165,20 @@ def Interfacemian(args):
     args.many=args.BKm
     args.document=args.BKd
     args.thread=args.BKt
-    #args.proxies=args.BKp #代理
+    args.proxies=args.BKp #代理
 
     if args.url != None or args.many != None:
         # 默认字典
         if args.document == None:
             args.document = config.Specifyablastdictionary['back']
 
-        # # 设置代理
-        # if args.proxies != None:
-        #     proxies = {
-        #         "http": "http://" + args.acting,
-        #         "https": "http://" + args.acting
-        #     }
-        #     handler = urllib.request.ProxyHandler(proxies)
-        #     args.proxies = urllib.request.build_opener(handler)
+        # 设置代理
+        if args.proxies != None:
+             args.acting=args.proxies
+             args.proxies= {
+                "http": "http://" +args.acting ,
+                "https": "http://" + args.acting
+            }
 
         # 默认线程
         if args.thread == None:
