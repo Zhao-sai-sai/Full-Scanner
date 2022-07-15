@@ -390,28 +390,7 @@ def help_h():
                                         nargs='?',
                                         help="可选设置代理")
 
-    # 端口扫描
 
-    C_segment_query_Active_collect_message = parser.add_argument_group(UseStyle("[2]主动信息收集：[5]C段查询", fore="yellow"))
-    C_segment_query_Active_collect_message.add_argument("-CPS",
-                                            metavar='IP',
-                                            dest='CPS',
-                                            type=str,
-                                            nargs='?',
-                                            help="端口扫描、比如 -PS 1.1.1.1")
-    C_segment_query_Active_collect_message.add_argument('-CPSp',
-                                            metavar='指定端口',
-                                            dest='CPSp',
-                                            type=str,
-                                            nargs='?',
-                                            help="指定端口、不指定默认常见的端口、指定比如-PSp 1-65535或者22,80,3306")
-    C_segment_query_Active_collect_message.add_argument('-CPSt',
-                                            metavar='线程数',
-                                            dest='CPSt',
-                                            type=int,
-                                            nargs='?',
-                                            help="指定线程、线程太多会出问题")
-    # 端口扫描
 
     Port_Active_collect_message = parser.add_argument_group(UseStyle("[2]主动信息收集：[4]端口扫描", fore="yellow"))
     Port_Active_collect_message.add_argument("-PS",
@@ -533,7 +512,7 @@ def help_h():
 
 # # 其他
     parser.add_argument_group(UseStyle("[*]其他：小工具", fore="blue"),"")
-    portquery_Blasting = parser.add_argument_group(UseStyle("其他：端口查询对应的服务", fore="cyan"))
+    portquery_Blasting = parser.add_argument_group(UseStyle("小工具：端口查询对应的服务", fore="cyan"))
     portquery_Blasting.add_argument("-tcp",
                                     metavar='端口',
                                     dest='tcp',
@@ -546,8 +525,23 @@ def help_h():
                                     type=str,
                                     nargs='?',
                                     help="udp查询")
-    # # POC，EXP
 
+    # 提取
+    M_Blasting = parser.add_argument_group(UseStyle("小工具：文件的中的域名提取", fore="cyan"))
+    M_Blasting.add_argument("-mdns",
+                            metavar='文件',
+                            dest='mdns',
+                            type=str,
+                            nargs='?',
+                            help="光提取文件中的域名/IP、比如文件有一个http://1.1.1.1/x/x/x/x、提取出来的就是1.1.1.1")
+    M_Blasting.add_argument("-mhttpdns",
+                            metavar='文件',
+                            dest='mhttpdns',
+                            type=str,
+                            nargs='?',
+                            help="取文件中的和[http/https://]+域名、比如文件有一个http://1.1.1.1/x/x/x/x、提取出来的就是http://1.1.1.1")
+
+    # # POC，EXP
     from PocAndExpScript.pecmdline import pecmdline
     parser=pecmdline.help_h(parser)
 

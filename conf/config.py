@@ -1,12 +1,38 @@
 import time
 import random
+from pathlib import Path
+import os
+
+def folder_creation(folder): # 查文件夹是否存在，不存在创建
+    my_file = Path(folder)
+    if not my_file.is_dir():
+        os.makedirs(folder)
+
+folder_creation('./result/back') # 查文件夹是否存在，不存在创建
+folder_creation('./result/cms')# 查文件夹是否存在，不存在创建
+folder_creation('./result/fofa')# 查文件夹是否存在，不存在创建
+folder_creation('./result/ftp')# 查文件夹是否存在，不存在创建
+folder_creation('./result/ProbeBackup')# 查文件夹是否存在，不存在创建
+folder_creation('./result/searchengine')# 查文件夹是否存在，不存在创建
+folder_creation('./result/shodan')# 查文件夹是否存在，不存在创建
+folder_creation('./result/ssh')# 查文件夹是否存在，不存在创建
+folder_creation('./result/webcrack')# 查文件夹是否存在，不存在创建
+folder_creation('./result/whois')# 查文件夹是否存在，不存在创建
+folder_creation('./result/Contentextraction')# 查文件夹是否存在，不存在创建
+
+
+
 current_time=time.strftime("%Y-%m-%d%H:%M:%S", time.localtime())
+
 
 
 SeriousConfig={
     'fofa':'',  # fofa的cookie
-    'shodan':'S80UjytFl5mfBeZ1p4PzVmBvApf256ii' # shodan的api
+    'shodan':'' # shodan的api
 }
+
+
+
 
 
 ua_list = [
@@ -73,5 +99,9 @@ Savelocation={
 
     # ssh破解保存
     'ssh': f'result/ssh/{current_time}ssh.txt',
+
+    # 文件的中的域名提取保存
+    'Contentextraction_dns': f'./result/Contentextraction/{current_time}dns.txt',
+    'Contentextraction_http': f'./result/Contentextraction/{current_time}http.txt',
 
 }

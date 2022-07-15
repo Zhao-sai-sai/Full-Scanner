@@ -140,7 +140,6 @@ class whether():
     def ssh_judge(self,ssh_crack,args):
 
         try:
-
             if ssh_crack !=None:
                 from blasting.ssh_blasting import ssh
                 #print(ssh_crack)
@@ -150,9 +149,25 @@ class whether():
     # # 其他
     # 端口对应服务查询
     def portquery_judge(self,Portquery_Parameter,args):
+
         if Portquery_Parameter!=None:
             from other.portquery import potrquery
             potrquery.Interfacemian(args)
+
+    # 文件的中的域名提取
+    def Contentextraction_judge(self,mdns_Parameter, mhttp_Parameter):
+
+
+        # 光提取文件中的域名/IP、比如文件有一个http://1.1.1.1/x/x/x/x、提取出来的就是1.1.1.1
+        if mdns_Parameter != None:
+            from other.Contentextraction import extraction
+            extraction.Interface_dns(mdns_Parameter)
+
+        # 取文件中的和[http/https://]+域名、比如文件有一个http://1.1.1.1/x/x/x/x、提取出来的就是http://1.1.1.1
+        elif mhttp_Parameter!=None:
+            from other.Contentextraction import extraction
+            extraction.Interface_http(mhttp_Parameter)
+
 
 
 

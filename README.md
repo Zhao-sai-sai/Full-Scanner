@@ -1,6 +1,6 @@
 ***
 > github项目地址：[https://github.com/Zhao-sai-sai/Full-Scanner](https://github.com/Zhao-sai-sai/Full-Scanner)
-## :one:工具简介
+## 工具简介
 
 工具还在写中半成品，可能要好几个月，应为我是懒王:kissing_closed_eyes:
 
@@ -12,7 +12,7 @@ Full-Scanner是一个多功能扫描工具，支持被动/主动信息收集，�
 - https://github.com/yzddmr6/WebCrack
 - https://github.com/F6JO/CmsVulScan
 
-## :two::white_check_mark:Full-Scanner的子工具
+## Full-Scanner的子工具
 
 什么是子工具就是我还没有整理到Full-Scanner工具里面的单独工具
 
@@ -20,19 +20,19 @@ Full-Scanner是一个多功能扫描工具，支持被动/主动信息收集，�
 - 网站备份文件扫描工具下面地址：https://github.com/Zhao-sai-sai/Full_Scanner_ProbeBackup
 - 后台扫描工具项目地址：https://github.com/Zhao-sai-sai/Full_Scanner_back
 
-## :three:工具下载
+## 工具下载
 
 ```bash
 git clone  https://github.com/Zhao-sai-sai/Full-Scanner.git
 ```
-## :four:安装一些依赖
+## 安装一些依赖
 
 ```bash
 cd Full-Scanner
 pip install -r requirements.txt
 ```
 
-## :five:目录结构
+## 目录结构
 
 现在的目录结构
 
@@ -110,7 +110,7 @@ Full-Scanner
 └── thirdparty # 用到的其他人写的工具
 ```
 
-## :six:工具的使用
+## 工具的使用
 
 ```bash
 >>>>>  python3 Full-Scanner.py -h

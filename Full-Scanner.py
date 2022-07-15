@@ -76,6 +76,6 @@ if __name__ == '__main__':
     judge.portquery_judge(args.udp,args)
 
     #judge.Acting_judge(args.PSC)
-
+    judge.Contentextraction_judge(args.mdns,args.mhttpdns)
 # PE
     judge.PE_judge(args.PE,args.refresh,args.reset,args)

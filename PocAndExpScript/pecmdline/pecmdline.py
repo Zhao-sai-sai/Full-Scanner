@@ -25,15 +25,5 @@ def help_h(parser):
                             default=False,
                             nargs='?',
                             help="重置POC/EXP")
-    
-    
-    CVE202226134_Blasting = parser.add_argument_group(UseStyle(" CVE-2022-26134",back='yellow'),"CVE-2022-26134Confluence远程命令执行漏洞")
-
-    CVE202226134_Blasting.add_argument("-CVE202226134u",
-                    metavar='目标',
-                    dest='CVE202226134u',
-                    type=str,
-                    nargs='?',
-                    help="目标")
-
     return parser
+    

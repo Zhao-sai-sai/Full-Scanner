@@ -39,4 +39,4 @@ def DNS_Climb_Crt(DNS):
 
 if __name__=="__main__":
 
-    DNS_Climb_Crt('zssnp.top')
+    DNS_Climb_Crt('')
