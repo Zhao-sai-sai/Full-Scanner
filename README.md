@@ -85,7 +85,9 @@ Full-Scanner
 │   │       ├── blasting_Options.py
 │   │       ├── Passive_Options.py
 ├── other # 其他脚本
-│   └── portquery # 查看端口对应的服务
+│   ├── Contentextraction # 小工具：文件的中的域名提取
+│   │   ├── extraction.py
+│   └── portquery # 小工具：端口查询对应的服务
 │       ├── potrquery.py
 │       └── tcpudp.py
 ├── PocAndExpScript # 自己脚本或者POCEXP生成到工具里面
@@ -111,6 +113,8 @@ Full-Scanner
 ```
 
 ## 工具的使用
+
+B站演示：https://www.bilibili.com/video/BV1ga411976w
 
 ```bash
 >>>>>  python3 Full-Scanner.py -h
