@@ -2,7 +2,6 @@
 import urllib.request
 import threading
 from urllib import error
-import time
 from conf import config # 配置文件
 import queue
 from lib.Auxiliary import current_time,Wire
@@ -28,7 +27,7 @@ def Batch_scan(path):
     i = 1
     # 叫文件内容变成
     search_url=queue.Queue()
-    thefile=open(path,mode='br', encoding="UTF-8")
+    thefile=open(path,mode='r', encoding="UTF-8")
 
     # 统计有多少行
     while True:
@@ -37,7 +36,7 @@ def Batch_scan(path):
             break
         i += buffer.count('\n')
 
-    print(UseStyle("文件一共有"+str(i)+"条目标",fore='yellow'))
+    print(UseStyle(f"{'-'*20}文件一共有"+str(i)+f"条目标{'-'*20}",fore='yellow'))
     # 叫每一行内容都保存到search_url中
     for i in open(path, encoding="UTF-8"):
         Batch.append(i.rstrip())
@@ -72,15 +71,13 @@ def Read_dictionary(document):
 def ask(search_url,url,proxies):
 
     while not search_url.empty():
-
         searchurl=search_url.get()
-        #time.sleep(1)  # 暂停 1 秒
-        #print(searchurl)
         try:
-            #print(config.HeadersConfig)
             global schedule
+            # 原位输出
+            print(f"{current_time()} [{schedule}/{count}]进度: {url+quote(searchurl)}")
 
-            print(f"\r{current_time()} 进度: [{schedule}/{count}]",end='')
+            #print(f"{current_time()} [{schedule}/{count}]进度: {url+quote(searchurl)}")
             #back=requests.get(url+i,headers=config.HeadersConfig)
             back = urllib.request.Request(url=(url+quote(searchurl)), headers=config.HeadersConfig, method='GET')
 
@@ -98,26 +95,31 @@ def ask(search_url,url,proxies):
             else:
                 response = urllib.request.urlopen(back, timeout=7)
 
-            if response.status==200:
+            if response.status == 200:
                 schedule+=1
-
+                # print(UseStyle(
+                #     f"\t\t\t\t\t\n\n{'*' * 20}\n请求这个地址存在：" + url + searchurl + f"\n{'*' * 20}\n\n",
+                #     fore='green'))
                 print(UseStyle(
-                    f"\t\t\t\t\t\n\n{'*' * 20}\n请求这个地址存在：" + url + searchurl + f"\n{'*' * 20}\n\n",
+                    f"{'*' * 20}\n请求这个地址存在：" + url + searchurl + f"\n{'*' * 20}",
                     fore='green'))
-
 
                 #print(+)
                 # print("\r", end="")
                 # Searchresults(url + searchurl)
                 # print('\r'+current_time()+f"进度: {schedule}/{count}",end='')
 
-
+            # 301
             elif response.status==301:
                 schedule += 1
-
+                # print(UseStyle(
+                #     f"\t\t\t\t\t\n\n{'*' * 20}\n请求这个地址存在：" + url + searchurl + f"\n{'*' * 20}\n\n",
+                #     fore='green'))
                 print(UseStyle(
-                    f"\t\t\t\t\t\n\n{'*' * 20}\n请求这个地址存在：" + url + searchurl + f"\n{'*' * 20}\n\n",
+                    f"{'*' * 20}\n请求这个地址存在：" + url + searchurl + f"\n{'*' * 20}",
                     fore='green'))
+
+
 
                 #print(current_time() + UseStyle(f"请求第[{str(schedule)}]这个地址存在：" + url + searchurl, fore='green'))
                 # print("\r", end="")
@@ -125,12 +127,14 @@ def ask(search_url,url,proxies):
                 # print('\r'+current_time()+f"进度: {schedule}/{count}",end='')
 
         except error.HTTPError as cw:
+            schedule += 1
             if str(cw) in "HTTP Error 404: Not Found":  # 报错404的
-                schedule += 1
+                pass
             if str(cw) in "<urlopen error [Errno 113] No route to host>": # 报错超时的
                 print('\n目标未7响应时间超时了！')
                 break
         except Exception as bc:
+            schedule += 1
             print("未知错误！" + str(bc))
 
             #print(UseStyle(f'请求第[{str(schedule)}][*]这个地址不存在：',fore='yellow')+UseStyle(url+searchurl+'\t\t\t\t\t[*]'+"状态码："+str(e.code),fore='red'))
@@ -149,7 +153,6 @@ def Thread(url,T,document,proxies):
 
 
 def Interface(args):
-    print(args.url)
     args.url=(args.url.strip())
 
     if args.url[-1]!='/': # 查看最后一个是否有/没有添加/
@@ -161,7 +164,6 @@ def Interface(args):
 def Interfacemian(args):
     global pl
     args.url=args.BK
-    print(args.BK)
     args.many=args.BKm
     args.document=args.BKd
     args.thread=args.BKt
@@ -182,7 +184,7 @@ def Interfacemian(args):
 
         # 默认线程
         if args.thread == None:
-            args.thread = 10
+            args.thread = 1
 
 
 

@@ -50,10 +50,10 @@ if __name__ == '__main__':
 
 
     # 备份文件扫描
-    judge.BP_judge(args.PB,args)
+    judge.BP_judge(args.PB,args.PBm,args)
 
     #后台扫描
-    judge.BK_judge(args.BK,args)
+    judge.BK_judge(args.BK,args.BKm,args)
 
     #端口扫描
     judge.PS_judge(args.PS, args)

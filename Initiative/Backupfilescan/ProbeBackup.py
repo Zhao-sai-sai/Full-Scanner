@@ -99,12 +99,13 @@ def ask(url,url_exists,proxies):
     while not url_exists.empty():
         searchurl=url_exists.get()
 
-
-        #print(current_time() + f"进度: {count}/{schedule}", "\r", end='')
         try:
+            # 原位输出
+            #print(f"\r{current_time()} 进度: {count}/{schedule}",  end="\r")
 
-            print(f"\r{current_time()} 进度: {count}/{schedule}",  end="\r")
+            print(f"{current_time()}{count}/{schedule} 进度： {url+quote(searchurl)}")
             back = urllib.request.Request(url=url+quote(searchurl), headers=config.HeadersConfig,method='GET')
+
 
             # 是否使用代理
             if proxies != None:
@@ -117,7 +118,6 @@ def ask(url,url_exists,proxies):
 
                 #发送代理请求
                 response = opener.open(back, timeout=7) # 代理请求
-
             else:
                 response = urllib.request.urlopen(back, timeout=7)
 
@@ -125,7 +125,7 @@ def ask(url,url_exists,proxies):
                 count += 1
                 content = response.headers['content-length']
                 content=covertFukeSize(content)
-                print(UseStyle(f"\t\t\t\t\t\n{'*'*20}\n请求这个备份文件存在：" +url+ searchurl+f'文件大小：\t{content}\n{"*"*20}\n', fore='green'))
+                print(UseStyle(f"{'*'*20}\n请求这个备份文件存在：" +url+ searchurl+f'文件大小：\t{content}\n{"*"*20}', fore='green'))
                 Searchresults(url+searchurl+f'\t\t文件大小：{content}')
 
         except Exception as cw:
@@ -168,9 +168,7 @@ def splicing(url,url_s,segmentation,T,proxies):
                   'bbs.zip',
                   'www.tar.gz',
                   "我的.txt"]
-    small = [chr(i) for i in range(97,123)] # a-z
-    calltaxi = [chr(i) for i in range(97, 123)]  # A-Z
-    number = [str(i) for i in range(0, 10)] # 0-9
+
 
     suffix = ['.zip',
               '.rar',
@@ -193,27 +191,36 @@ def splicing(url,url_s,segmentation,T,proxies):
               '.jar',
               '.temp']
 
-    for i in small:  # a-z
-        for Extract_4 in suffix:
-            url_exists.put(i+Extract_4)
+    # small = [chr(i) for i in range(97,123)] # a-z
+    # calltaxi = [chr(i) for i in range(97, 123)]  # A-Z
+    # number = [str(i) for i in range(0, 10)] # 0-9
 
-    for i in calltaxi:  # A-Z
-        for Extract_5 in suffix:
-            url_exists.put(i + Extract_5)
 
-    for i in number:  # 0-9
-        for Extract_6 in suffix:
-            url_exists.put(i + Extract_6)
+    # for i in small:  # a-z
+    #     for Extract_4 in suffix:
+    #         url_exists.put(i+Extract_4)
+    #
+    # for i in calltaxi:  # A-Z
+    #     for Extract_5 in suffix:
+    #         url_exists.put(i + Extract_5)
 
-    for Extract_1 in dictionary:# 默认字典
-        url_exists.put(Extract_1)
+    # for i in number:  # 0-9
+    #     for Extract_6 in suffix:
+    #         url_exists.put(i + Extract_6)
+
+    for Extract_1 in suffix:# 域名拼接
+        url_exists.put(url_s+Extract_1)
 
     for i in suffix: # 分割拼接
         for Extract_2 in segmentation:
             url_exists.put(Extract_2+i)
 
-    for Extract_3 in suffix:# 域名拼接
-        url_exists.put(url_s+Extract_3)
+    for Extract_3 in dictionary:# 默认字典
+        url_exists.put(Extract_3)
+
+
+
+
 
     global schedule
     schedule = str((len(url_exists.queue)))
@@ -230,13 +237,16 @@ def fix(url,T,document,proxies):
         elif 'https://' in url:
             http = 'https://'
     else:
-        try: # 判断目标是不是目标是不是https
-            http='https://'
-            url=http+url.strip()
-            r = requests.get(url=url,headers=config.HeadersConfig)
-        except requests.exceptions.SSLError:
-            http = 'http://'
-            url=url.replace('https://', http)
+        http = 'http://'
+        url = http + url.strip()
+
+        #try: # 判断目标是不是目标是不是https
+            # http='http://'
+            # url=http+url.strip()
+        #     requests.get(url=url,headers=config.HeadersConfig)
+        # except requests.exceptions.SSLError:
+        #     #http =
+        #     url=url.replace('https://', 'http://')
 
 
     url_s = url.replace(http, '')
@@ -267,8 +277,9 @@ def Interface(args):
     args.thread = args.PBt
     args.document = args.PBd
     args.proxies = args.PBp #代理
-
     global pl
+    global count
+
     if args.url !=None or args.many != None:
         if args.thread==None:
             args.thread=1
@@ -282,7 +293,10 @@ def Interface(args):
             }
 
         # 是否批量扫描
-        if args.many == None:
+        if args.many == None: # 不批量扫描
+
+
+
             print(choose_color_2("扫描结果会保存到：result/ProbeBackup/文件夹里面\n你输入的目标地址是: " +
                                  args.url +
                                  '\n线程数是：' +
@@ -299,6 +313,6 @@ def Interface(args):
                 schedule =1 # 重置字典的数量
                 pl += 1  # 记录批量扫描的数量
                 print(choose_color_2(
-                                     f"\n\n扫描结果会保存到result/ProbeBackup/文件夹里面\n正在扫描：{url} 第{str(pl)}个目标"+
+                                     f"扫描结果会保存到result/ProbeBackup/文件夹里面\n正在扫描：{url} 第{str(pl)}个目标"+
                                      f"\n线程数是：{str(args.thread)}"))
                 fix(url,args.thread,args.document,args.proxies)

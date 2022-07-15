@@ -54,7 +54,7 @@ class whether():
         if SubDNS_Parameter!=None:
             #print(SubDNS_Parameter)
             SubDns.DNS_Interface(args)
-    # dns
+    # Google
     def Google_judge(self,SubDNS_Parameter,args):
 
         if SubDNS_Parameter!=None:
@@ -75,20 +75,28 @@ class whether():
                 print("有错误！错误提示" + str(bc))
 
     # 备份文件扫描
-    def BP_judge(self,BP,args):
+    def BP_judge(self,BP,BPm,args):
 
         try:
-            if BP != None:
+            if BP != None: # 单个扫描
                 from Initiative.Backupfilescan import ProbeBackup
                 ProbeBackup.Interface(args)
+
+            elif BPm!=None: # 批量扫描
+                from Initiative.Backupfilescan import ProbeBackup
+                ProbeBackup.Interface(args)
+
         except Exception as bc:
             print("有错误！错误提示" + str(bc))
 
     # 后台扫描
-    def BK_judge(self,BK,args):
+    def BK_judge(self,BK,BKm,args):
 
         # try:
         if BK != None:
+            from Initiative.backgroundscan import back
+            back.Interfacemian(args)
+        elif BKm != None:  # 批量扫描
             from Initiative.backgroundscan import back
             back.Interfacemian(args)
         # except Exception as bc:
